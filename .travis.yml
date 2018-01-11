@@ -1,0 +1,27 @@
+language: swift
+
+osx_image: xcode9
+
+cache:
+  - cocoapods
+
+branches:
+  only:
+    - master
+
+env:
+  - LC_TYPE=en_US.UTF-8 LANG=en_US.UTF-8
+
+before_install:
+  - gem install cocoapods
+  - gem install xcpretty -N
+  - pod repo add chika-specs https://github.com/mownier/chika-podspecs.git
+  - pod repo update master
+  - pod repo update chika-specs
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+script:
+  - set -o pipefail
+  - xcodebuild build test -workspace ChikaFirebase.xcworkspace -scheme ChikaFirebase -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone SE" | xcpretty -c
