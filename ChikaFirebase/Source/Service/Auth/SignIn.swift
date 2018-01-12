@@ -14,15 +14,9 @@ public class SignIn: ChikaCore.SignIn {
     var auth: FirebaseAuth.Auth
     var authValidator: AuthValidator
     
-    public init(auth: FirebaseAuth.Auth, authValidator: AuthValidator) {
+    public init(auth: FirebaseAuth.Auth = FirebaseAuth.Auth.auth() , authValidator: AuthValidator = AuthValidation()) {
         self.auth = auth
         self.authValidator = authValidator
-    }
-    
-    public convenience init() {
-        let auth = FirebaseAuth.Auth.auth()
-        let authValidator = AuthValidation()
-        self.init(auth: auth, authValidator: authValidator)
     }
     
     public func signIn(withEmail email: String, password: String, completion: @escaping (Result<ChikaCore.Auth>) -> Void) -> Bool {
