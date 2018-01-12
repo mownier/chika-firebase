@@ -41,6 +41,10 @@ class FirebaseAuthUserMock: User {
         completion?(error)
     }
     
+    override func updatePassword(to password: String, completion: UserProfileChangeCallback? = nil) {
+        completion?(error)
+    }
+    
     override func getIDTokenForcingRefresh(_ forceRefresh: Bool, completion: AuthTokenCallback? = nil) {
         completion?(token, error)
     }
