@@ -44,6 +44,16 @@ class FirebaseAuthMock: FirebaseAuth.Auth {
         completion?(mockUser, nil)
     }
     
+    override func signOut() throws {
+        guard error == nil else {
+            throw error!
+        }
+        
+        guard currentUser != nil else {
+            throw Error("no current user")
+        }
+    }
+    
     func createAuthenticatedUser(withEmail email: String) -> FirebaseAuthUserMock {
         let user = FirebaseAuthUserMock(id: "person:\(Date().timeIntervalSince1970)")
         user.mockEmail = email
