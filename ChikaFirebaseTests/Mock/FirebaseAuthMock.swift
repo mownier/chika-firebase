@@ -35,6 +35,23 @@ class FirebaseAuthMock: FirebaseAuth.Auth {
         completion?(mockUser, nil)
     }
     
+    override func createUser(withEmail email: String, password: String, completion: AuthResultCallback? = nil) {
+        guard users.contains(where: { $0.key != email }) else {
+            completion?(nil, Error("email already exists"))
+            return
+        }
+        
+        completion?(mockUser, nil)
+    }
+    
+    func createAuthenticatedUser(withEmail email: String) -> FirebaseAuthUserMock {
+        let user = FirebaseAuthUserMock(id: "person:\(Date().timeIntervalSince1970)")
+        user.mockEmail = email
+        user.token = "accessToken"
+        user.mockRefreshToken = "refreshToken"
+        return user
+    }
+    
     var mockAuthenticatedUser: FirebaseAuthUserMock {
         let user = FirebaseAuthUserMock(id: "person:1")
         user.mockEmail = "me@me.com"
