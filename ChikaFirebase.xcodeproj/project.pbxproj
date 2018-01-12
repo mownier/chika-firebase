@@ -23,6 +23,7 @@
 		48CEB51C2006042400D3C681 /* ChikaFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CEB5122006042400D3C681 /* ChikaFirebase.framework */; };
 		48CEB5232006042400D3C681 /* ChikaFirebase.h in Headers */ = {isa = PBXBuildFile; fileRef = 48CEB5152006042400D3C681 /* ChikaFirebase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48ED7F422008710900FE0C1A /* PasswordUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED7F412008710900FE0C1A /* PasswordUpdaterTests.swift */; };
+		48ED7F44200873CB00FE0C1A /* RegistrarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED7F43200873CB00FE0C1A /* RegistrarTests.swift */; };
 		4E146237BAD4297C5DA66966 /* Pods_ChikaFirebaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE21984DC1995A0C8642C42A /* Pods_ChikaFirebaseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		48CEB51B2006042400D3C681 /* ChikaFirebaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChikaFirebaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48CEB5222006042400D3C681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48ED7F412008710900FE0C1A /* PasswordUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordUpdaterTests.swift; sourceTree = "<group>"; };
+		48ED7F43200873CB00FE0C1A /* RegistrarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarTests.swift; sourceTree = "<group>"; };
 		7D2D6C8743756CEE650757B3 /* Pods-ChikaFirebaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChikaFirebaseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChikaFirebaseTests/Pods-ChikaFirebaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		9D955B343C8066D934B1E0CA /* Pods_ChikaFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChikaFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0A430B1E11A24BDF2922DC /* Pods-ChikaFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChikaFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChikaFirebase/Pods-ChikaFirebase.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				48B5B32A2007339C00D091B2 /* AccessTokenRefresherTests.swift */,
 				48B5B33120073C1E00D091B2 /* EmailUpdaterTests.swift */,
 				48ED7F412008710900FE0C1A /* PasswordUpdaterTests.swift */,
+				48ED7F43200873CB00FE0C1A /* RegistrarTests.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				48B5B32E2007348800D091B2 /* FirebaseAuthMock.swift in Sources */,
 				48B5B330200734AE00D091B2 /* FirebaseAuthUserMock.swift in Sources */,
 				48B5B33220073C1E00D091B2 /* EmailUpdaterTests.swift in Sources */,
+				48ED7F44200873CB00FE0C1A /* RegistrarTests.swift in Sources */,
 				48B5B32B2007339C00D091B2 /* AccessTokenRefresherTests.swift in Sources */,
 				48B5B32820072A8000D091B2 /* AuthValidationTests.swift in Sources */,
 			);
