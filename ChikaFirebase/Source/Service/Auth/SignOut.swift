@@ -13,13 +13,8 @@ public class SignOut: ChikaCore.SignOut {
 
     var auth: FirebaseAuth.Auth
     
-    public init(auth: FirebaseAuth.Auth) {
+    public init(auth: FirebaseAuth.Auth = FirebaseAuth.Auth.auth()) {
         self.auth = auth
-    }
-    
-    public convenience init() {
-        let auth = FirebaseAuth.Auth.auth()
-        self.init(auth: auth)
     }
     
     public func signOut(withCompletion completion: @escaping (Result<OK>) -> Void) -> Bool {
