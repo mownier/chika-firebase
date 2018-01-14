@@ -4,11 +4,20 @@ platform :ios, '11.0'
 use_frameworks!
 
 target 'ChikaFirebase' do
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
+  pod 'FirebaseCommunity/Database'
+  pod 'FirebaseCommunity/Auth'
   pod 'ChikaCore'
   
   target 'ChikaFirebaseTests' do
       inherit! :search_paths
   end
+end
+
+post_install do |installer|
+    installer.pods_project.build_configurations.each do |config|
+        config.build_settings['CLANG_ENABLE_CODE_COVERAGE'] = 'NO'
+        if config.name == 'Release'
+            config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Owholemodule'
+        end
+    end
 end

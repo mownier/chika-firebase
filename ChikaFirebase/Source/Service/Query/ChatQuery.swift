@@ -7,8 +7,7 @@
 //
 
 import ChikaCore
-import FirebaseAuth
-import FirebaseDatabase
+import FirebaseCommunity
 
 public class ChatQuery: ChikaCore.ChatQuery {
 
@@ -24,13 +23,13 @@ public class ChatQuery: ChikaCore.ChatQuery {
         self.recentChatMessageQuery = recentChatMessageQuery
     }
     
-    public convenience init(meID: String = FirebaseAuth.Auth.auth().currentUser?.uid ?? "", database: Database = Database.database()) {
+    public convenience init(meID: String = FirebaseCommunity.Auth.auth().currentUser?.uid ?? "", database: Database = Database.database()) {
         let personQuery = PersonQuery(meID: meID, database: database)
         let recentChatMessageQuery = RecentChatMessageQuery(database: database)
         self.init(meID: meID, database: database, personQuery: personQuery, recentChatMessageQuery: recentChatMessageQuery)
     }
     
-    public convenience init(meID: String = FirebaseAuth.Auth.auth().currentUser?.uid ?? "", database: Database = Database.database(), personQuery: ChikaCore.PersonQuery) {
+    public convenience init(meID: String = FirebaseCommunity.Auth.auth().currentUser?.uid ?? "", database: Database = Database.database(), personQuery: ChikaCore.PersonQuery) {
         let recentChatMessageQuery = RecentChatMessageQuery(database: database)
         self.init(meID: meID, database: database, personQuery: personQuery, recentChatMessageQuery: recentChatMessageQuery)
     }

@@ -7,8 +7,7 @@
 //
 
 import ChikaCore
-import FirebaseAuth
-import FirebaseDatabase
+import FirebaseCommunity
 
 public class ContactQuery: ChikaCore.ContactQuery {
 
@@ -24,7 +23,7 @@ public class ContactQuery: ChikaCore.ContactQuery {
         self.personQuery = personQuery
     }
     
-    public convenience init(meID: String = FirebaseAuth.Auth.auth().currentUser?.uid ?? "", database: Database = Database.database()) {
+    public convenience init(meID: String = FirebaseCommunity.Auth.auth().currentUser?.uid ?? "", database: Database = Database.database()) {
         let personQuery = PersonQuery(meID: meID, database: database)
         let chatQuery = ChatQuery(meID: meID, database: database, personQuery: personQuery)
         self.init(meID: meID, database: database, chatQuery: chatQuery, personQuery: personQuery)

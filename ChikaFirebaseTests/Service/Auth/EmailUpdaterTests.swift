@@ -8,7 +8,7 @@
 
 import XCTest
 import ChikaCore
-import FirebaseAuth
+import FirebaseCommunity
 @testable import ChikaFirebase
 
 class EmailUpdaterTests: XCTestCase {

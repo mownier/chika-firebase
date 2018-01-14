@@ -7,14 +7,14 @@
 //
 
 import ChikaCore
-import FirebaseAuth
+import FirebaseCommunity
 
 public class AccessTokenRefresher: ChikaCore.AccessTokenRefresher {
 
-    var user: FirebaseAuth.User?
+    var user: FirebaseCommunity.User?
     var authValidator: AuthValidator
     
-    public init(user: FirebaseAuth.User? = FirebaseAuth.Auth.auth().currentUser, authValidator: AuthValidator = AuthValidation()) {
+    public init(user: FirebaseCommunity.User? = FirebaseCommunity.Auth.auth().currentUser, authValidator: AuthValidator = AuthValidation()) {
         self.user = user
         self.authValidator = authValidator
     }

@@ -7,7 +7,7 @@
 //
 
 import ChikaCore
-import FirebaseDatabase
+import FirebaseCommunity
 
 public class MessageQuery: ChikaCore.MessageQuery {
 

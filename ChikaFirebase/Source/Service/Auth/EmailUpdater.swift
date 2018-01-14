@@ -7,13 +7,13 @@
 //
 
 import ChikaCore
-import FirebaseAuth
+import FirebaseCommunity
 
 public class EmailUpdater: ChikaCore.EmailUpdater {
 
-    var auth: FirebaseAuth.Auth
+    var auth: FirebaseCommunity.Auth
     
-    public init(auth: FirebaseAuth.Auth = FirebaseAuth.Auth.auth()) {
+    public init(auth: FirebaseCommunity.Auth = FirebaseCommunity.Auth.auth()) {
         self.auth = auth
     }
     

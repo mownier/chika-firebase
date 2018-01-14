@@ -7,15 +7,14 @@
 //
 
 import ChikaCore
-import FirebaseAuth
-import FirebaseDatabase
+import FirebaseCommunity
 
 public class PersonQuery: ChikaCore.PersonQuery {
     
     var meID: String
     var database: Database
     
-    public init(meID: String = FirebaseAuth.Auth.auth().currentUser?.uid ?? "", database: Database = Database.database()) {
+    public init(meID: String = FirebaseCommunity.Auth.auth().currentUser?.uid ?? "", database: Database = Database.database()) {
         self.meID = meID
         self.database = database
     }

@@ -7,14 +7,14 @@
 //
 
 import ChikaCore
-import FirebaseAuth
+import FirebaseCommunity
 
 public class SignIn: ChikaCore.SignIn {
 
-    var auth: FirebaseAuth.Auth
+    var auth: FirebaseCommunity.Auth
     var authValidator: AuthValidator
     
-    public init(auth: FirebaseAuth.Auth = FirebaseAuth.Auth.auth() , authValidator: AuthValidator = AuthValidation()) {
+    public init(auth: FirebaseCommunity.Auth = FirebaseCommunity.Auth.auth() , authValidator: AuthValidator = AuthValidation()) {
         self.auth = auth
         self.authValidator = authValidator
     }

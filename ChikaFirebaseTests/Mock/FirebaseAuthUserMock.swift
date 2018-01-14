@@ -6,7 +6,7 @@
 //  Copyright © 2018 Nir. All rights reserved.
 //
 
-import FirebaseAuth
+import FirebaseCommunity
 
 class FirebaseAuthUserMock: User {
 

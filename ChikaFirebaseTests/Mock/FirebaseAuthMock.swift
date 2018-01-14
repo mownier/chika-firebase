@@ -7,9 +7,9 @@
 //
 
 import ChikaCore
-import FirebaseAuth
+import FirebaseCommunity
 
-class FirebaseAuthMock: FirebaseAuth.Auth {
+class FirebaseAuthMock: FirebaseCommunity.Auth {
 
     var users = [
         "me@me.com": "me12345"

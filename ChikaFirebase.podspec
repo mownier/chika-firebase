@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true  
 
   s.subspec 'Auth' do |ss|
-    ss.dependency 'FirebaseAuth'
+    ss.dependency 'FirebaseCommunity/Auth'
 
     ss.dependency 'ChikaCore/Error'
     ss.dependency 'ChikaCore/Service:Auth'
@@ -21,8 +21,8 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Query' do |ss|
-    ss.dependency 'FirebaseAuth'
-    ss.dependency 'FirebaseDatabase'
+    ss.dependency 'FirebaseCommunity/Auth'
+    ss.dependency 'FirebaseCommunity/Database'
     
     ss.dependency 'ChikaCore/Error'
     ss.dependency 'ChikaCore/Service:Query'
