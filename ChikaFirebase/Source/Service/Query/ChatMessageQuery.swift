@@ -45,9 +45,7 @@ public class ChatMessageQuery: ChatMessageBatchQuery {
     }
     
     public func getMessages(of chatID: ID, completion: @escaping (Result<[Message]>) -> Void) -> Bool {
-        let chatID = "\(chatID)"
-        
-        guard !chatID.isEmpty else {
+        guard !"\(chatID)".isEmpty else {
             completion(.err(Error("chat ID is empty")))
             return false
         }
@@ -93,7 +91,7 @@ public class ChatMessageQuery: ChatMessageBatchQuery {
         return messageIDs
     }
     
-    private func getDatabaseQuery(_ chatID: String, _ offset: Double) -> DatabaseQuery {
+    private func getDatabaseQuery(_ chatID: ID, _ offset: Double) -> DatabaseQuery {
         var query = database.reference().child("chat:messages/\(chatID)").queryOrdered(byChild: "created_on")
         
         if offset > 0 {

@@ -24,7 +24,7 @@ public class ChatQuery: ChikaCore.ChatQuery {
     }
     
     public convenience init(meID: String = FirebaseCommunity.Auth.auth().currentUser?.uid ?? "", database: Database = Database.database()) {
-        let personQuery = PersonQuery(meID: meID, database: database)
+        let personQuery = PersonQuery(database: database)
         let recentChatMessageQuery = RecentChatMessageQuery(database: database)
         self.init(meID: meID, database: database, personQuery: personQuery, recentChatMessageQuery: recentChatMessageQuery)
     }
@@ -35,7 +35,7 @@ public class ChatQuery: ChikaCore.ChatQuery {
     }
     
     public func getChats(for chatIDs: [ID], completion: @escaping (Result<[Chat]>) -> Void) -> Bool {
-        let chatIDs = chatIDs.map({ "\($0)" })
+        let chatIDs = chatIDs.filter({ !"\($0)".isEmpty })
         
         guard !chatIDs.isEmpty else {
             completion(.err(Error("empty chatIDs")))
@@ -54,11 +54,6 @@ public class ChatQuery: ChikaCore.ChatQuery {
         }
         
         for chatID in chatIDs {
-            guard !chatID.isEmpty else {
-                chatCounter += 1
-                continue
-            }
-            
             getChat(chatID) { chat in
                 if chat != nil {
                     chats.append(chat!)
@@ -71,7 +66,7 @@ public class ChatQuery: ChikaCore.ChatQuery {
         return true
     }
     
-    private func getChat(_ chatID: String, _ chatCounterUpdate: @escaping (Chat?) -> Void) {
+    private func getChat(_ chatID: ID, _ chatCounterUpdate: @escaping (Chat?) -> Void) {
         let chatsRef = database.reference().child("chats/\(chatID)")
         let getPersonsBlock = getPersons
         
@@ -83,7 +78,7 @@ public class ChatQuery: ChikaCore.ChatQuery {
             }
             
             var chat = Chat()
-            chat.id = ID(chatID)
+            chat.id = chatID
             chat.title = info["title"] as? String ?? ""
             chat.creatorID = ID(info["creator"] as? String ?? "")
             
@@ -94,7 +89,6 @@ public class ChatQuery: ChikaCore.ChatQuery {
     }
     
     private func getPersons(_ personIDs: [ID], _ chat: Chat, _ chatCounterUpdate: @escaping (Chat?) -> Void) {
-        var chat = chat
         let getRecentChatMessageBlock = getRecentChatMessage
         
         let _ = personQuery.getPersons(for: personIDs) { result in
@@ -106,6 +100,7 @@ public class ChatQuery: ChikaCore.ChatQuery {
                         return
                 }
                 
+                var chat = chat
                 chat.participants = persons
                 getRecentChatMessageBlock(chat, chatCounterUpdate)
                 
@@ -116,12 +111,12 @@ public class ChatQuery: ChikaCore.ChatQuery {
     }
     
     private func getRecentChatMessage(_ chat: Chat, _ chatCounterUpdate: @escaping (Chat?) -> Void) {
-        var chat = chat
         let authUserID = meID
         
         let _ = recentChatMessageQuery.getRecentChatMessage(of: chat.id) { result in
             switch result {
             case .ok(let message):
+                var chat = chat
                 if chat.title.isEmpty {
                     let filtered = chat.participants.filter({ $0.id != ID(authUserID) })
                     let mapped = filtered.map({ $0.displayName.isEmpty ? $0.name : $0.displayName })

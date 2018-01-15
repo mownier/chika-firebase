@@ -24,7 +24,7 @@ public class ContactQuery: ChikaCore.ContactQuery {
     }
     
     public convenience init(meID: String = FirebaseCommunity.Auth.auth().currentUser?.uid ?? "", database: Database = Database.database()) {
-        let personQuery = PersonQuery(meID: meID, database: database)
+        let personQuery = PersonQuery(database: database)
         let chatQuery = ChatQuery(meID: meID, database: database, personQuery: personQuery)
         self.init(meID: meID, database: database, chatQuery: chatQuery, personQuery: personQuery)
     }
