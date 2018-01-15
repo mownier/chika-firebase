@@ -1,46 +1,50 @@
 PODS:
-  - ChikaCore (0.2):
-    - ChikaCore/Error (= 0.2)
-    - ChikaCore/Model (= 0.2)
-    - ChikaCore/Model:Auth (= 0.2)
-    - ChikaCore/Model:Store (= 0.2)
-    - ChikaCore/Model:Unique (= 0.2)
-    - ChikaCore/Result (= 0.2)
-    - ChikaCore/Service (= 0.2)
-    - ChikaCore/Service:Auth (= 0.2)
-    - ChikaCore/Service:Listener (= 0.2)
-    - ChikaCore/Service:Listener:Object (= 0.2)
-    - ChikaCore/Service:Query (= 0.2)
-    - ChikaCore/Service:Search (= 0.2)
-    - ChikaCore/Service:Writer (= 0.2)
-  - ChikaCore/Error (0.2)
-  - ChikaCore/Model (0.2):
+  - ChikaCore (0.3):
+    - ChikaCore/Error (= 0.3)
+    - ChikaCore/Model (= 0.3)
+    - ChikaCore/Model:Auth (= 0.3)
+    - ChikaCore/Model:Store (= 0.3)
+    - ChikaCore/Model:Unique (= 0.3)
+    - ChikaCore/Result (= 0.3)
+    - ChikaCore/Service (= 0.3)
+    - ChikaCore/Service:Auth (= 0.3)
+    - ChikaCore/Service:Listener (= 0.3)
+    - ChikaCore/Service:Listener:Object (= 0.3)
+    - ChikaCore/Service:Query (= 0.3)
+    - ChikaCore/Service:Search (= 0.3)
+    - ChikaCore/Service:Writer (= 0.3)
+  - ChikaCore/Error (0.3)
+  - ChikaCore/Model (0.3):
     - ChikaCore/Model:Auth
     - ChikaCore/Model:Store
     - ChikaCore/Model:Unique
-  - ChikaCore/Model:Auth (0.2):
+  - ChikaCore/Model:Auth (0.3):
     - ChikaCore/Model:Unique
-  - ChikaCore/Model:Store (0.2):
+  - ChikaCore/Model:Store (0.3):
     - ChikaCore/Model:Unique
-  - ChikaCore/Model:Unique (0.2)
-  - ChikaCore/Result (0.2)
-  - ChikaCore/Service (0.2):
+  - ChikaCore/Model:Unique (0.3)
+  - ChikaCore/Result (0.3)
+  - ChikaCore/Service (0.3):
     - ChikaCore/Service:Auth
-  - ChikaCore/Service:Auth (0.2):
+    - ChikaCore/Service:Listener
+    - ChikaCore/Service:Query
+    - ChikaCore/Service:Search
+    - ChikaCore/Service:Writer
+  - ChikaCore/Service:Auth (0.3):
     - ChikaCore/Model:Auth
     - ChikaCore/Result
-  - ChikaCore/Service:Listener (0.2):
+  - ChikaCore/Service:Listener (0.3):
     - ChikaCore/Result
     - ChikaCore/Service:Listener:Object
-  - ChikaCore/Service:Listener:Object (0.2):
+  - ChikaCore/Service:Listener:Object (0.3):
     - ChikaCore/Model:Store
-  - ChikaCore/Service:Query (0.2):
-    - ChikaCore/Model:Store
-    - ChikaCore/Result
-  - ChikaCore/Service:Search (0.2):
+  - ChikaCore/Service:Query (0.3):
     - ChikaCore/Model:Store
     - ChikaCore/Result
-  - ChikaCore/Service:Writer (0.2):
+  - ChikaCore/Service:Search (0.3):
+    - ChikaCore/Model:Store
+    - ChikaCore/Result
+  - ChikaCore/Service:Writer (0.3):
     - ChikaCore/Model:Store
     - ChikaCore/Result
   - FirebaseCommunity/Auth (0.1.6):
@@ -73,11 +77,11 @@ DEPENDENCIES:
   - FirebaseCommunity/Database
 
 SPEC CHECKSUMS:
-  ChikaCore: 26f90bc3389223c08c843f952f8b677f19aaf5a4
+  ChikaCore: 950c8e1e1e9c25d0bd8a156e77d400b2f783ee0f
   FirebaseCommunity: 1f9a0e48654316b4ffe4c830db0ce72b9e2d2c9d
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
-  leveldb-library: 4f9eedf84ab46b4fa3b7893bf30714b2a1a74022
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
 
 PODFILE CHECKSUM: 684dbd53786ad78edcc13b0189d6b900e4ad5f72
 
