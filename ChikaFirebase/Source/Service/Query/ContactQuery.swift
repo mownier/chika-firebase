@@ -31,21 +31,18 @@ public class ContactQuery: ChikaCore.ContactQuery {
     
     public func getContacts(withCompletion completion: @escaping (Result<[Contact]>) -> Void) -> Bool {
         let contactsRef = database.reference().child("person:contacts/\(meID)")
-        let contactsReferenceHandlerBlock = contactsReferenceHandler
+        let getPersonAndChatIDsBlock = getPersonAndChatIDs
+        let getPersonsBlock = getPersons
         contactsRef.observeSingleEvent(of: .value) { snapshot in
-            contactsReferenceHandlerBlock(snapshot, completion)
+            guard snapshot.exists(), snapshot.hasChildren() else {
+                completion(.ok([]))
+                return
+            }
+            
+            let (personIDs, chatIDs) = getPersonAndChatIDsBlock(snapshot)
+            getPersonsBlock(personIDs, chatIDs, completion)
         }
         return true
-    }
-    
-    private func contactsReferenceHandler(_ snapshot: DataSnapshot, _ completion: @escaping (Result<[Contact]>) -> Void) {
-        guard snapshot.exists(), snapshot.hasChildren() else {
-            completion(.ok([]))
-            return
-        }
-        
-        let (personIDs, chatIDs) = getPersonAndChatIDs(snapshot)
-        getPersons(personIDs, chatIDs, completion)
     }
     
     private func getPersonAndChatIDs(_ snapshot: DataSnapshot) -> ([ID], [ID: ID]) {
