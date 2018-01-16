@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0431FD9BDE8BE142DC276632 /* Pods_ChikaFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D955B343C8066D934B1E0CA /* Pods_ChikaFirebase.framework */; };
 		488421C7200C88B70027A144 /* MyInfoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488421C6200C88B70027A144 /* MyInfoQuery.swift */; };
+		488FDE61200CE21300307B96 /* FirebaseDatabaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FDE60200CE21300307B96 /* FirebaseDatabaseMock.swift */; };
+		488FDE63200CE2B700307B96 /* FirebaseDatabaseReferenceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FDE62200CE2B700307B96 /* FirebaseDatabaseReferenceMock.swift */; };
+		488FDE67200CEA6700307B96 /* FirebaseDataSnapshotMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488FDE66200CEA6700307B96 /* FirebaseDataSnapshotMock.swift */; };
+		488FDE69200CEE2900307B96 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 488FDE68200CEE2900307B96 /* TestData.json */; };
 		48B5B3162007050D00D091B2 /* AccessTokenRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B5B3152007050C00D091B2 /* AccessTokenRefresher.swift */; };
 		48B5B31A2007096B00D091B2 /* AuthValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B5B3192007096B00D091B2 /* AuthValidator.swift */; };
 		48B5B31C20070C3D00D091B2 /* EmailUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B5B31B20070C3D00D091B2 /* EmailUpdater.swift */; };
@@ -51,6 +55,10 @@
 		399E4F27175F7C2D0F19BDC1 /* Pods-ChikaFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChikaFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChikaFirebase/Pods-ChikaFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		3E351FBC5D271F481DCE2679 /* Pods-ChikaFirebaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChikaFirebaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChikaFirebaseTests/Pods-ChikaFirebaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		488421C6200C88B70027A144 /* MyInfoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoQuery.swift; sourceTree = "<group>"; };
+		488FDE60200CE21300307B96 /* FirebaseDatabaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseMock.swift; sourceTree = "<group>"; };
+		488FDE62200CE2B700307B96 /* FirebaseDatabaseReferenceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseReferenceMock.swift; sourceTree = "<group>"; };
+		488FDE66200CEA6700307B96 /* FirebaseDataSnapshotMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataSnapshotMock.swift; sourceTree = "<group>"; };
+		488FDE68200CEE2900307B96 /* TestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestData.json; sourceTree = "<group>"; };
 		48B5B3152007050C00D091B2 /* AccessTokenRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenRefresher.swift; sourceTree = "<group>"; };
 		48B5B3192007096B00D091B2 /* AuthValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthValidator.swift; sourceTree = "<group>"; };
 		48B5B31B20070C3D00D091B2 /* EmailUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailUpdater.swift; sourceTree = "<group>"; };
@@ -179,6 +187,9 @@
 			children = (
 				48B5B32D2007348800D091B2 /* FirebaseAuthMock.swift */,
 				48B5B32F200734AE00D091B2 /* FirebaseAuthUserMock.swift */,
+				488FDE60200CE21300307B96 /* FirebaseDatabaseMock.swift */,
+				488FDE62200CE2B700307B96 /* FirebaseDatabaseReferenceMock.swift */,
+				488FDE66200CEA6700307B96 /* FirebaseDataSnapshotMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -216,6 +227,7 @@
 		48CEB51F2006042400D3C681 /* ChikaFirebaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				488FDE68200CEE2900307B96 /* TestData.json */,
 				48CEB5222006042400D3C681 /* Info.plist */,
 				48B5B32C200733BC00D091B2 /* Mock */,
 				48B5B32520072A5F00D091B2 /* Service */,
@@ -366,6 +378,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				488FDE69200CEE2900307B96 /* TestData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,7 +514,10 @@
 				48ED7F44200873CB00FE0C1A /* RegistrarTests.swift in Sources */,
 				48B5B32B2007339C00D091B2 /* AccessTokenRefresherTests.swift in Sources */,
 				48B5B32820072A8000D091B2 /* AuthValidationTests.swift in Sources */,
+				488FDE67200CEA6700307B96 /* FirebaseDataSnapshotMock.swift in Sources */,
 				48ED7F462008792F00FE0C1A /* SignInTests.swift in Sources */,
+				488FDE61200CE21300307B96 /* FirebaseDatabaseMock.swift in Sources */,
+				488FDE63200CE2B700307B96 /* FirebaseDatabaseReferenceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
