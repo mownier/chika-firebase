@@ -70,7 +70,7 @@ public class ChatQuery: ChikaCore.ChatQuery {
         let chatsRef = database.reference().child("chats/\(chatID)")
         let getPersonsBlock = getPersons
         
-        chatsRef.observeSingleEvent(of: .value) { snapshot in
+        chatsRef.observeSingleEvent(of: .value, with: { snapshot in
             guard let info = snapshot.value as? [String : Any],
                 let participants = info["participants"] as? [String: Any] else {
                     chatCounterUpdate(nil)
@@ -83,8 +83,10 @@ public class ChatQuery: ChikaCore.ChatQuery {
             chat.creatorID = ID(info["creator"] as? String ?? "")
             
             let personIDs = participants.flatMap({ ID($0.key) })
-            
             getPersonsBlock(personIDs, chat, chatCounterUpdate)
+            
+        }) { _ in
+            chatCounterUpdate(nil)
         }
     }
     
@@ -95,7 +97,7 @@ public class ChatQuery: ChikaCore.ChatQuery {
             switch result {
             case .ok(let persons):
                 guard personIDs.count == persons.count,
-                    personIDs == persons.map({ $0.id }) else {
+                    personIDs.sorted(by: { "\($0)" < "\($1)" }) == persons.map({ $0.id }).sorted(by: { "\($0)" < "\($1)" }) else {
                         chatCounterUpdate(nil)
                         return
                 }
@@ -119,7 +121,7 @@ public class ChatQuery: ChikaCore.ChatQuery {
                 var chat = chat
                 if chat.title.isEmpty {
                     let filtered = chat.participants.filter({ $0.id != ID(authUserID) })
-                    let mapped = filtered.map({ $0.displayName.isEmpty ? $0.name : $0.displayName })
+                    let mapped = filtered.map({ $0.displayName })
                     let title = mapped.joined(separator: ", ")
                     chat.title = title
                 }
