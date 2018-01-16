@@ -30,7 +30,7 @@ public class RecentChatMessageQuery: ChikaCore.RecentChatMessageQuery {
             return false
         }
         
-        let query = database.reference().child("chat:messages").queryOrdered(byChild: "created_on").queryLimited(toLast: 1)
+        let query = database.reference().child("chat:messages/\(chatID)").queryOrdered(byChild: "created:on").queryLimited(toLast: 1)
         let getMessagesBlock = getMessages
         
         query.observeSingleEvent(of: .value) { snapshot in

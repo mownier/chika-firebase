@@ -67,7 +67,7 @@ public class MessageQuery: ChikaCore.MessageQuery {
             
             let author = info["author"] as? String ?? ""
             let content = info["content"] as? String ?? ""
-            let createdOn = (info["created_on"] as? Double ?? 0) / 1000
+            let createdOn = (info["created:on"] as? Double ?? 0) / 1000
             
             var message = Message()
             message.id = messageID
