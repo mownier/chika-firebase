@@ -27,16 +27,12 @@ public class InboxQuery: ChikaCore.InboxQuery {
     }
     
     public func getInbox(withCompletion completion: @escaping (Result<[Chat]>) -> Void) -> Bool {
-        guard !meID.isEmpty else {
-            completion(.err(Error("current user ID is empty")))
-            return false
-        }
+        let databaseQuery = database.reference().child("person:inbox/\(meID)").queryOrdered(byChild: "updated:on")
         
-        let inboxRef = database.reference().child("person:inbox/\(meID)")
         let getChatsBlock = getChats
         let getChatIDsBlock = getChatIDs
         
-        inboxRef.queryOrdered(byChild: "updated_on").observeSingleEvent(of: .value) { snapshot in
+        databaseQuery.observeSingleEvent(of: .value, with: { snapshot in
             guard snapshot.exists(), snapshot.childrenCount > 0 else {
                 completion(.ok([]))
                 return
@@ -44,6 +40,9 @@ public class InboxQuery: ChikaCore.InboxQuery {
             
             let chatIDs = getChatIDsBlock(snapshot)
             getChatsBlock(chatIDs, completion)
+            
+        }) { error in
+            completion(.err(error))
         }
         
         return true

@@ -58,8 +58,11 @@ public class ChatMessageQuery: ChatMessageBatchQuery {
         let databaseQuery = getDatabaseQuery(chatID, offset)
         let databaseQueryHandlerBlock = databaseQueryHandler
         
-        databaseQuery.observeSingleEvent(of: .value) { snapshot in
+        databaseQuery.observeSingleEvent(of: .value, with: { snapshot in
             databaseQueryHandlerBlock(snapshot, completion)
+            
+        }) { error in
+            completion(.err(error))
         }
         
         return true

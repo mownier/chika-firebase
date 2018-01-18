@@ -33,7 +33,7 @@ public class RecentChatMessageQuery: ChikaCore.RecentChatMessageQuery {
         let query = database.reference().child("chat:messages/\(chatID)").queryOrdered(byChild: "created:on").queryLimited(toLast: 1)
         let getMessagesBlock = getMessages
         
-        query.observeSingleEvent(of: .value) { snapshot in
+        query.observeSingleEvent(of: .value, with: { snapshot in
             guard let info = snapshot.value as? [String : Any], info.keys.count == 1 else {
                 completion(.err(Error("chat info contains zero or more than one item")))
                 return
@@ -41,6 +41,9 @@ public class RecentChatMessageQuery: ChikaCore.RecentChatMessageQuery {
             
             let messageIDs = [ID(info.keys.first!)]
             getMessagesBlock(messageIDs, completion)
+            
+        }) { error in
+            completion(.err(error))
         }
         
         return true

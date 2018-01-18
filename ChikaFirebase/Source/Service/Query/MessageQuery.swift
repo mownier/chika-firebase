@@ -59,7 +59,7 @@ public class MessageQuery: ChikaCore.MessageQuery {
         let messgesRef = database.reference().child("messages/\(messageID)")
         let getPersonsBlock = getPersons
         
-        messgesRef.observeSingleEvent(of: .value) { snapshot in
+        messgesRef.observeSingleEvent(of: .value, with: { snapshot in
             guard let info = snapshot.value as? [String : Any] else {
                 messageCounterUpdate(nil)
                 return
@@ -75,6 +75,9 @@ public class MessageQuery: ChikaCore.MessageQuery {
             message.content = content
             
             getPersonsBlock([ID(author)], message, messageCounterUpdate)
+            
+        }) { _ in
+            messageCounterUpdate(nil)
         }
     }
     

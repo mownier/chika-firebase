@@ -27,11 +27,6 @@ public class MyInfoQuery: ChikaCore.MyInfoQuery {
     }
     
     public func getMyInfo(withCompletion completion: @escaping (Result<Person>) -> Void) -> Bool {
-        guard !meID.isEmpty else {
-            completion(.err(Error("current user ID is empty")))
-            return false
-        }
-        
         let personIDs = [ID(meID)]
         let getEmailBlock = getEmail
         
@@ -54,8 +49,9 @@ public class MyInfoQuery: ChikaCore.MyInfoQuery {
     }
     
     private func getEmail(_ person: Person, _ completion: @escaping (Result<Person>) -> Void) {
-        let emailRef = database.reference().child("person:email/\(person.id)/email")
-        emailRef.observeSingleEvent(of: .value) { snapshot in
+        let emailRef = database.reference().child("person:email/\(person.id)")
+        
+        emailRef.observeSingleEvent(of: .value, with: { snapshot in
             var person = person
             
             if snapshot.exists(), let email = snapshot.value as? String {
@@ -63,6 +59,9 @@ public class MyInfoQuery: ChikaCore.MyInfoQuery {
             }
             
             completion(.ok(person))
+            
+        }) { error in
+            completion(.err(error))
         }
     }
     

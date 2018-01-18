@@ -37,7 +37,7 @@ public class PersonQuery: ChikaCore.PersonQuery {
         }
         
         for personID in personIDs {
-            getPersonInfo(personID, completion) { person in
+            getPersonInfo(personID) { person in
                 if person != nil  {
                     persons.append(person!)
                 }
@@ -48,10 +48,10 @@ public class PersonQuery: ChikaCore.PersonQuery {
         return true
     }
     
-    private func getPersonInfo(_ personID: ID, _ completion: @escaping (Result<[Person]>) -> Void, _ personCounterUpdate: @escaping (Person?) -> Void) {
+    private func getPersonInfo(_ personID: ID, _ personCounterUpdate: @escaping (Person?) -> Void) {
         let personsRef = database.reference().child("persons/\(personID)")
         
-        personsRef.observeSingleEvent(of: .value) { snapshot in
+        personsRef.observeSingleEvent(of: .value, with: { snapshot in
             guard let info = snapshot.value as? [String: Any] else {
                 personCounterUpdate(nil)
                 return
@@ -64,6 +64,9 @@ public class PersonQuery: ChikaCore.PersonQuery {
             person.displayName = info["display:name"] as? String ?? ""
             
             personCounterUpdate(person)
+            
+        }) { _ in
+            personCounterUpdate(nil)
         }
     }
 }
