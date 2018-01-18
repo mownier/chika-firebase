@@ -1,186 +1,205 @@
 {
-    "chat:typing:status": {
-        "-L0tYbBDp33VIsrGQQuT": {
-            "cicStvHdPWbbiEEFLPdlqXn6rHy2": false,
-            "fDiA4AFz85guSN5hfrD1rm5Zzt32": false
-        },
-        "-L0tYGZPv5AS_YutEL14": {
-            "cicStvHdPWbbiEEFLPdlqXn6rHy2": false,
-            "fDiA4AFz85guSN5hfrD1rm5Zzt32": false,
-            "9RhkK3X9ZRVAA3UubaWkYAMMXZw2": false
-        }
-    },
-    "chat:messages": {
-        "-L0tYbBDp33VIsrGQQuT": {
-            "-KznoH1TLxmG-0ZOjf5K": {
-                "created:on": 1513867867157
-            }
-        },
-        "-L0tYGZPv5AS_YutEL14": {
-            "-KznorLH0kYIrqYT1Kna": {
-                "created:on": 1513867778590
-            }
-        }
-    },
-    "chats": {
-        "-L0tYbBDp33VIsrGQQuT": {
-            "id": "-L0tYbBDp33VIsrGQQuT",
-            "created:on": 1513867867157,
-            "updated:on": 1513867867157,
-            "participants": {
-                "cicStvHdPWbbiEEFLPdlqXn6rHy2": true,
-                "fDiA4AFz85guSN5hfrD1rm5Zzt32": true
-            }
-        },
-        "-L0tYGZPv5AS_YutEL14": {
-            "id": "-L0tYGZPv5AS_YutEL14",
-            "title": "Rock N' Roll",
-            "creator": "fDiA4AFz85guSN5hfrD1rm5Zzt32",
-            "created:on": 1513867778590,
-            "updated:on": 1513867778590,
-            "participants": {
-                "cicStvHdPWbbiEEFLPdlqXn6rHy2": true,
-                "fDiA4AFz85guSN5hfrD1rm5Zzt32": true,
-                "9RhkK3X9ZRVAA3UubaWkYAMMXZw2": true
-            }
-        }
-    },
-    "messages": {
-        "-KznoH1TLxmG-0ZOjf5K": {
-            "id": "-KznoH1TLxmG-0ZOjf5K",
-            "author": "cicStvHdPWbbiEEFLPdlqXn6rHy2",
-            "content": "Hello World",
-            "created:on": 1513867867157
-        },
-        "-KznorLH0kYIrqYT1Kna": {
-            "id": "-KznorLH0kYIrqYT1Kna",
-            "author": "fDiA4AFz85guSN5hfrD1rm5Zzt32",
-            "content": "Hello Universe",
-            "created:on": 1513867778590
-        }
-    },
-    "person:contact": {
-        "cicStvHdPWbbiEEFLPdlqXn6rHy2": {
-            "fDiA4AFz85guSN5hfrD1rm5Zzt32": {
-                "chat": "-L0tYbBDp33VIsrGQQuT"
+    "chat:messages" : {
+        "-L0tYGZPv5AS_YutEL14" : {
+            "-KznorLH0kYIrqYT1Kna" : {
+                "created:on" : 1511624264994
             },
-            "contact:default:id": {
-                "chat": "chat:default:id"
+            "-KznowkQFJ9M1NU-5vhF" : {
+                "created:on" : 1513867778590
             }
         },
-        "fDiA4AFz85guSN5hfrD1rm5Zzt32": {
-            "cicStvHdPWbbiEEFLPdlqXn6rHy2": {
-                "chat": "-L0tYbBDp33VIsrGQQuT"
+        "-L0tYbBDp33VIsrGQQuT" : {
+            "-KznoH1TLxmG-0ZOjf5K" : {
+                "created:on" : 1511624282374
             },
-            "contact:default:id": {
-                "chat": "chat:default:id"
-            }
-        }
-    },
-    "person:inbox": {
-        "cicStvHdPWbbiEEFLPdlqXn6rHy2": {
-            "-L0tYbBDp33VIsrGQQuT": {
-                "updated:on": 1513867867157
-            },
-            "-L0tYGZPv5AS_YutEL14": {
-                "updated:on": 1513867778590
-            },
-            "chat:default:id": {
-                "updated:on": 0
-            }
-        },
-        "fDiA4AFz85guSN5hfrD1rm5Zzt32": {
-            "-L0tYbBDp33VIsrGQQuT": {
-                "updated:on": 1513867867157
-            },
-            "-L0tYGZPv5AS_YutEL14": {
-                "updated:on": 1513867778590
-            },
-            "chat:default:id": {
-                "updated:on": 0
-            }
-        },
-        "9RhkK3X9ZRVAA3UubaWkYAMMXZw2": {
-            "-L0tYGZPv5AS_YutEL14": {
-                "updated:on": 1513867778590
-            },
-            "chat:default:id": {
-                "updated:on": 0
+            "-Kznp0-4si_KBozjSj1d" : {
+                "created:on" : 1513867867157
             }
         }
     },
-    "person:email": {
-        "cicStvHdPWbbiEEFLPdlqXn6rHy2": "wee@wee.com",
-        "fDiA4AFz85guSN5hfrD1rm5Zzt32": "waa@waa.com",
-        "9RhkK3X9ZRVAA3UubaWkYAMMXZw2": "woo@woo.com",
-        "7OYWnGH1PWfi1cKEq1sAeMVSw0y2": "wii@wii.com"
-    },
-    "person:name": {
-        "cicStvHdPWbbiEEFLPdlqXn6rHy2": "iamwee",
-        "fDiA4AFz85guSN5hfrD1rm5Zzt32": "iamwaa",
-        "9RhkK3X9ZRVAA3UubaWkYAMMXZw2": "iamwoo",
-        "7OYWnGH1PWfi1cKEq1sAeMVSw0y2": "iamwii"
-    },
-    "person:presence": {
-        "cicStvHdPWbbiEEFLPdlqXn6rHy2": {
-            "active:on": 1513930654139,
-            "is:active": false
+    "chat:typing:status" : {
+        "-L0tYGZPv5AS_YutEL14" : {
+            "9RhkK3X9ZRVAA3UubaWkYAMMXZw2" : false,
+            "cicStvHdPWbbiEEFLPdlqXn6rHy2" : false,
+            "fDiA4AFz85guSN5hfrD1rm5Zzt32" : false
         },
-        "fDiA4AFz85guSN5hfrD1rm5Zzt32": {
-            "active:on": 1513690098039,
-            "is:active": false
-        },
-        "9RhkK3X9ZRVAA3UubaWkYAMMXZw2": {
-            "active:on": 1515133378419,
-            "is:active": false
-        },
-        "7OYWnGH1PWfi1cKEq1sAeMVSw0y2": {
-            "active:on": 1513263437850,
-            "is:active": false
+        "-L0tYbBDp33VIsrGQQuT" : {
+            "cicStvHdPWbbiEEFLPdlqXn6rHy2" : false,
+            "fDiA4AFz85guSN5hfrD1rm5Zzt32" : false
         }
     },
-    "person:search": {
-        "cicStvHdPWbbiEEFLPdlqXn6rHy2": {
-            "name": "iamwee",
-            "email": "wee",
-            "display:name": "wee"
+    "chats" : {
+        "-L0tYGZPv5AS_YutEL14" : {
+            "created:on" : 1513867778590,
+            "creator" : "fDiA4AFz85guSN5hfrD1rm5Zzt32",
+            "id" : "-L0tYGZPv5AS_YutEL14",
+            "participants" : {
+                "9RhkK3X9ZRVAA3UubaWkYAMMXZw2" : true,
+                "cicStvHdPWbbiEEFLPdlqXn6rHy2" : true,
+                "fDiA4AFz85guSN5hfrD1rm5Zzt32" : true
+            },
+            "title" : "Rock N' Roll",
+            "updated:on" : 1513867778590
         },
-        "fDiA4AFz85guSN5hfrD1rm5Zzt32": {
-            "name": "iamwaa",
-            "email": "waa",
-            "display:name": "waa"
-        },
-        "9RhkK3X9ZRVAA3UubaWkYAMMXZw2": {
-            "name": "iamwoo",
-            "email": "woo",
-            "display:name": "woo"
-        },
-        "7OYWnGH1PWfi1cKEq1sAeMVSw0y2": {
-            "name": "iamwii",
-            "email": "wii",
-            "display:name": "wii"
+        "-L0tYbBDp33VIsrGQQuT" : {
+            "created:on" : 1513867867157,
+            "id" : "-L0tYbBDp33VIsrGQQuT",
+            "participants" : {
+                "cicStvHdPWbbiEEFLPdlqXn6rHy2" : true,
+                "fDiA4AFz85guSN5hfrD1rm5Zzt32" : true
+            },
+            "updated:on" : 1513867867157
         }
     },
-    "persons": {
-        "cicStvHdPWbbiEEFLPdlqXn6rHy2": {
-            "id": "cicStvHdPWbbiEEFLPdlqXn6rHy2",
-            "name": "iamwee",
-            "display:name": "wee"
+    "messages" : {
+        "-KznoH1TLxmG-0ZOjf5K" : {
+            "author" : "cicStvHdPWbbiEEFLPdlqXn6rHy2",
+            "content" : "Hello World",
+            "created:on" : 1511624282374,
+            "id" : "-KznoH1TLxmG-0ZOjf5K"
         },
-        "fDiA4AFz85guSN5hfrD1rm5Zzt32": {
-            "id": "fDiA4AFz85guSN5hfrD1rm5Zzt32",
-            "name": "iamwaa",
-            "display:name": "waa"
+        "-KznorLH0kYIrqYT1Kna" : {
+            "author" : "fDiA4AFz85guSN5hfrD1rm5Zzt32",
+            "content" : "Hello Universe",
+            "created:on" : 1511624264994,
+            "id" : "-KznorLH0kYIrqYT1Kna"
         },
-        "9RhkK3X9ZRVAA3UubaWkYAMMXZw2": {
-            "id": "9RhkK3X9ZRVAA3UubaWkYAMMXZw2",
-            "name": "iamwoo",
-            "display:name": "woo"
+        "-KznowkQFJ9M1NU-5vhF" : {
+            "author" : "cicStvHdPWbbiEEFLPdlqXn6rHy2",
+            "content" : "Are you all there?",
+            "created:on" : 1513867778590,
+            "id" : "-KznowkQFJ9M1NU-5vhF"
         },
-        "7OYWnGH1PWfi1cKEq1sAeMVSw0y2": {
-            "id": "7OYWnGH1PWfi1cKEq1sAeMVSw0y2",
-            "name": "iamwii",
-            "display:name": "wii"
+        "-Kznp0-4si_KBozjSj1d" : {
+            "author" : "fDiA4AFz85guSN5hfrD1rm5Zzt32",
+            "content" : "What can I do for you?",
+            "created:on" : 1513867867157,
+            "id" : "-Kznp0-4si_KBozjSj1d"
+        }
+    },
+    "person:contacts" : {
+        "cicStvHdPWbbiEEFLPdlqXn6rHy2" : {
+            "contact:default:id" : {
+                "chat" : "chat:default:id"
+            },
+            "fDiA4AFz85guSN5hfrD1rm5Zzt32" : {
+                "chat" : "-L0tYbBDp33VIsrGQQuT"
+            }
+        },
+        "fDiA4AFz85guSN5hfrD1rm5Zzt32" : {
+            "cicStvHdPWbbiEEFLPdlqXn6rHy2" : {
+                "chat" : "-L0tYbBDp33VIsrGQQuT"
+            },
+            "contact:default:id" : {
+                "chat" : "chat:default:id"
+            }
+        }
+    },
+    "person:email" : {
+        "7OYWnGH1PWfi1cKEq1sAeMVSw0y2" : "wii@wii.com",
+        "9RhkK3X9ZRVAA3UubaWkYAMMXZw2" : "woo@woo.com",
+        "cicStvHdPWbbiEEFLPdlqXn6rHy2" : "wee@wee.com",
+        "fDiA4AFz85guSN5hfrD1rm5Zzt32" : "waa@waa.com"
+    },
+    "person:inbox" : {
+        "9RhkK3X9ZRVAA3UubaWkYAMMXZw2" : {
+            "-L0tYGZPv5AS_YutEL14" : {
+                "updated:on" : 1513867778590
+            },
+            "chat:default:id" : {
+                "updated:on" : 0
+            }
+        },
+        "cicStvHdPWbbiEEFLPdlqXn6rHy2" : {
+            "-L0tYGZPv5AS_YutEL14" : {
+                "updated:on" : 1513867778590
+            },
+            "-L0tYbBDp33VIsrGQQuT" : {
+                "updated:on" : 1513867867157
+            },
+            "chat:default:id" : {
+                "updated:on" : 0
+            }
+        },
+        "fDiA4AFz85guSN5hfrD1rm5Zzt32" : {
+            "-L0tYGZPv5AS_YutEL14" : {
+                "updated:on" : 1513867778590
+            },
+            "-L0tYbBDp33VIsrGQQuT" : {
+                "updated:on" : 1513867867157
+            },
+            "chat:default:id" : {
+                "updated:on" : 0
+            }
+        }
+    },
+    "person:name" : {
+        "7OYWnGH1PWfi1cKEq1sAeMVSw0y2" : "iamwii",
+        "9RhkK3X9ZRVAA3UubaWkYAMMXZw2" : "iamwoo",
+        "cicStvHdPWbbiEEFLPdlqXn6rHy2" : "iamwee",
+        "fDiA4AFz85guSN5hfrD1rm5Zzt32" : "iamwaa"
+    },
+    "person:presence" : {
+        "7OYWnGH1PWfi1cKEq1sAeMVSw0y2" : {
+            "active:on" : 1513263437850,
+            "is:active" : false
+        },
+        "9RhkK3X9ZRVAA3UubaWkYAMMXZw2" : {
+            "active:on" : 1515133378419,
+            "is:active" : false
+        },
+        "cicStvHdPWbbiEEFLPdlqXn6rHy2" : {
+            "active:on" : 1513930654139,
+            "is:active" : false
+        },
+        "fDiA4AFz85guSN5hfrD1rm5Zzt32" : {
+            "active:on" : 1513690098039,
+            "is:active" : false
+        }
+    },
+    "person:search" : {
+        "7OYWnGH1PWfi1cKEq1sAeMVSw0y2" : {
+            "display:name" : "wii",
+            "email" : "wii",
+            "name" : "iamwii"
+        },
+        "9RhkK3X9ZRVAA3UubaWkYAMMXZw2" : {
+            "display:name" : "woo",
+            "email" : "woo",
+            "name" : "iamwoo"
+        },
+        "cicStvHdPWbbiEEFLPdlqXn6rHy2" : {
+            "display:name" : "wee",
+            "email" : "wee",
+            "name" : "iamwee"
+        },
+        "fDiA4AFz85guSN5hfrD1rm5Zzt32" : {
+            "display:name" : "waa",
+            "email" : "waa",
+            "name" : "iamwaa"
+        }
+    },
+    "persons" : {
+        "7OYWnGH1PWfi1cKEq1sAeMVSw0y2" : {
+            "display:name" : "wii",
+            "id" : "7OYWnGH1PWfi1cKEq1sAeMVSw0y2",
+            "name" : "iamwii"
+        },
+        "9RhkK3X9ZRVAA3UubaWkYAMMXZw2" : {
+            "display:name" : "woo",
+            "id" : "9RhkK3X9ZRVAA3UubaWkYAMMXZw2",
+            "name" : "iamwoo"
+        },
+        "cicStvHdPWbbiEEFLPdlqXn6rHy2" : {
+            "display:name" : "wee",
+            "id" : "cicStvHdPWbbiEEFLPdlqXn6rHy2",
+            "name" : "iamwee"
+        },
+        "fDiA4AFz85guSN5hfrD1rm5Zzt32" : {
+            "display:name" : "waa",
+            "id" : "fDiA4AFz85guSN5hfrD1rm5Zzt32",
+            "name" : "iamwaa"
         }
     }
 }
+
