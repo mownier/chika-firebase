@@ -19,7 +19,29 @@ public class AcceptContactRequestAction: ChikaCore.AcceptContactRequestAction {
         self.database = database
     }
     
-    public func acceptContactRequest(withID id: ID, requestorID: ID, completion: @escaping (Result<OK>) -> Void) -> Bool {
+    public func acceptContactRequest(withID id: ID, completion: @escaping (Result<OK>) -> Void) -> Bool {
+        guard !"\(id)".isEmpty else {
+            completion(.err(Error("contact request ID is empty")))
+            return false
+        }
+        
+        let updateRootChildValuesBlock = updateRootChildValues
+        
+        getRequestorID(id) { result in
+            switch result {
+            case .ok(let requestorID):
+                updateRootChildValuesBlock(id, requestorID, completion)
+            
+            case .err(let error):
+                completion(.err(error))
+            }
+        }
+        
+        
+        return true
+    }
+    
+    private func updateRootChildValues(_ contactRequestID: ID, _ requestorID: ID, _ completion: @escaping (Result<OK>) -> Void) {
         let rootRef = database.reference()
         let chatsRef = rootRef.child("chats")
         
@@ -42,7 +64,7 @@ public class AcceptContactRequestAction: ChikaCore.AcceptContactRequestAction {
             "person:contacts/\(meID)/\(requestorID)/chat": chatKey,
             "person:contact:request:established/\(requestorID)/\(meID)": NSNull(),
             "person:contact:request:established/\(meID)/\(requestorID)": NSNull(),
-            "contact:requests/\(id)": NSNull()
+            "contact:requests/\(contactRequestID)": NSNull()
         ]
         
         rootRef.updateChildValues(values) { error, _ in
@@ -53,8 +75,21 @@ public class AcceptContactRequestAction: ChikaCore.AcceptContactRequestAction {
             
             completion(.ok(OK("accepted contact request")))
         }
-        
-        return true
+    }
+    
+    private func getRequestorID(_ id: ID, _ completion: @escaping (Result<ID>) -> Void) {
+        let requestorRef = database.reference().child("contact:requests/\(id)/requestor")
+        requestorRef.observeSingleEvent(of: .value, with: { snapshot in
+            guard snapshot.exists(), let requestor = snapshot.value as? String, !requestor.isEmpty else {
+                completion(.err(Error("requestor not found")))
+                return
+            }
+            
+            completion(.ok(ID(requestor)))
+            
+        }) { error in
+            completion(.err(error))
+        }
     }
     
 }

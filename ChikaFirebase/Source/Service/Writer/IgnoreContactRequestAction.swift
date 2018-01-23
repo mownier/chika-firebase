@@ -19,10 +19,31 @@ public class IgnoreContactRequestAction: ChikaCore.IgnoreContactRequestAction {
         self.database = database
     }
     
-    public func ignoreContactRequest(withID id: ID, requestorID: ID, completion: @escaping (Result<OK>) -> Void) -> Bool {
+    public func ignoreContactRequest(withID id: ID, completion: @escaping (Result<OK>) -> Void) -> Bool {
+        guard !"\(id)".isEmpty else {
+            completion(.err(Error("contact request ID is empty")))
+            return false
+        }
+        
+        let updateRootChildValuesBlock = updateRootChildValues
+        
+        getRequestorID(id) { result in
+            switch result {
+            case .ok(let requestorID):
+                updateRootChildValuesBlock(id, requestorID, completion)
+                
+            case .err(let error):
+                completion(.err(error))
+            }
+        }
+        
+        return true
+    }
+    
+    private func updateRootChildValues(_ contactRequestID: ID, _ requestorID: ID, _ completion: @escaping (Result<OK>) -> Void) {
         let rootRef = database.reference()
         let values: [String: Any] = [
-            "contact:requests/\(id)": NSNull(),
+            "contact:requests/\(contactRequestID)": NSNull(),
             "person:contact:request:established/\(requestorID)/\(meID)": NSNull(),
             "person:contact:request:established/\(meID)/\(requestorID)": NSNull()
         ]
@@ -35,8 +56,21 @@ public class IgnoreContactRequestAction: ChikaCore.IgnoreContactRequestAction {
             
             completion(.ok(OK("ignored contact request successfully")))
         }
-        
-        return true
+    }
+    
+    private func getRequestorID(_ id: ID, _ completion: @escaping (Result<ID>) -> Void) {
+        let requestorRef = database.reference().child("contact:requests/\(id)/requestor")
+        requestorRef.observeSingleEvent(of: .value, with: { snapshot in
+            guard snapshot.exists(), let requestor = snapshot.value as? String, !requestor.isEmpty else {
+                completion(.err(Error("requestor not found")))
+                return
+            }
+            
+            completion(.ok(ID(requestor)))
+            
+        }) { error in
+            completion(.err(error))
+        }
     }
     
 }
