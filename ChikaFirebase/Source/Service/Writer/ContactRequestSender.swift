@@ -20,18 +20,37 @@ public class ContactRequestSender: ChikaCore.ContactRequestSender {
     }
     
     public func sendContactRequest(to personID: ID, message: String, completion: @escaping (Result<OK>) -> Void) -> Bool {
+        guard !meID.isEmpty else {
+            completion(.err(Error("current user ID is empty")))
+            return false
+        }
+        
+        guard !"\(personID)".isEmpty else {
+            completion(.err(Error("person ID is empty")))
+            return false
+        }
+        
+        guard personID != ID(meID) else {
+            completion(.err(Error("current user ID must not be equal to person ID")))
+            return false
+        }
+        
         let rootRef = database.reference()
         let requestsRef = rootRef.child("contact:requests")
         
         let requestKey = requestsRef.childByAutoId().key
         
-        let newRequest: [AnyHashable: Any] = [
+        var newRequest: [AnyHashable: Any] = [
             "id": requestKey,
-            "message": message,
             "requestor": meID,
-            "requestee": personID,
+            "requestee": "\(personID)",
             "created:on": ServerValue.timestamp()
         ]
+        
+        let message = message.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !message.isEmpty {
+            newRequest["message"] = message
+        }
         
         let values: [AnyHashable: Any] = [
             "contact:requests/\(requestKey)": newRequest,
