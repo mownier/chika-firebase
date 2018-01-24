@@ -20,6 +20,11 @@ public class IgnoreContactRequestAction: ChikaCore.IgnoreContactRequestAction {
     }
     
     public func ignoreContactRequest(withID id: ID, completion: @escaping (Result<OK>) -> Void) -> Bool {
+        guard !meID.isEmpty else {
+            completion(.err(Error("current user ID is empty")))
+            return false
+        }
+        
         guard !"\(id)".isEmpty else {
             completion(.err(Error("contact request ID is empty")))
             return false
@@ -41,6 +46,11 @@ public class IgnoreContactRequestAction: ChikaCore.IgnoreContactRequestAction {
     }
     
     private func updateRootChildValues(_ contactRequestID: ID, _ requestorID: ID, _ completion: @escaping (Result<OK>) -> Void) {
+        guard requestorID != ID(meID) else {
+            completion(.err(Error("can not ignore the request because you are the requestor")))
+            return
+        }
+        
         let rootRef = database.reference()
         let values: [String: Any] = [
             "contact:requests/\(contactRequestID)": NSNull(),
