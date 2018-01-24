@@ -33,11 +33,8 @@ public class PersonRegistrar: ChikaCore.PersonRegistrar {
         
         let values: [String: Any] = [
             "persons/\(meID)": personValue,
-            "persons:search/\(meID)": searchValue,
-            
             "person:email/\(meID)/email": email,
-            "person:inbox/\(meID)/chat:default:id/updated:on": 0,
-            "person:contacts/\(meID)/contact:default:id/chat": "chat:default:id"
+            "persons:search/\(meID)": searchValue,
         ]
         
         let rootRef = database.reference()
