@@ -20,6 +20,11 @@ public class AcceptContactRequestAction: ChikaCore.AcceptContactRequestAction {
     }
     
     public func acceptContactRequest(withID id: ID, completion: @escaping (Result<OK>) -> Void) -> Bool {
+        guard !meID.isEmpty else {
+            completion(.err(Error("current user ID is empty")))
+            return false
+        }
+        
         guard !"\(id)".isEmpty else {
             completion(.err(Error("contact request ID is empty")))
             return false
@@ -42,6 +47,11 @@ public class AcceptContactRequestAction: ChikaCore.AcceptContactRequestAction {
     }
     
     private func updateRootChildValues(_ contactRequestID: ID, _ requestorID: ID, _ completion: @escaping (Result<OK>) -> Void) {
+        guard requestorID != ID(meID) else {
+            completion(.err(Error("can not accept the request because you are the requestor")))
+            return
+        }
+        
         let rootRef = database.reference()
         let chatsRef = rootRef.child("chats")
         
@@ -49,10 +59,10 @@ public class AcceptContactRequestAction: ChikaCore.AcceptContactRequestAction {
         let timestamp = ServerValue.timestamp()
         
         let newChat: [String: Any] = [
+            "id": chatKey,
             "created:on": timestamp,
             "updated:on": timestamp,
-            "id": chatKey,
-            "participants":[
+            "participants": [
                 "\(meID)": true,
                 "\(requestorID)": true
             ]
@@ -60,10 +70,16 @@ public class AcceptContactRequestAction: ChikaCore.AcceptContactRequestAction {
         
         let values: [AnyHashable: Any] = [
             "chats/\(chatKey)": newChat,
-            "person:contacts/\(requestorID)/\(meID)/chat": chatKey,
+            
             "person:contacts/\(meID)/\(requestorID)/chat": chatKey,
-            "person:contact:request:established/\(requestorID)/\(meID)": NSNull(),
+            "person:contacts/\(meID)/\(requestorID)/since": timestamp,
+
+            "person:contacts/\(requestorID)/\(meID)/chat": chatKey,
+            "person:contacts/\(requestorID)/\(meID)/since": timestamp,
+            
             "person:contact:request:established/\(meID)/\(requestorID)": NSNull(),
+            "person:contact:request:established/\(requestorID)/\(meID)": NSNull(),
+            
             "contact:requests/\(contactRequestID)": NSNull()
         ]
         
