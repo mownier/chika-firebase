@@ -62,17 +62,15 @@ public class MessageCreator: ChikaCore.MessageCreator {
         let timestamp = ServerValue.timestamp()
         let messageKey = database.reference().child("messages").childByAutoId().key
         
-        let message: [String: Any] = [
-            "id": messageKey,
-            "chat": "\(chatID)",
-            "author": meID,
-            "content": content.trimmingCharacters(in: .newlines),
-            "created:on": timestamp
-        ]
-        
         let values: [String: Any] = [
-            "messages/\(messageKey)": message,
             "chats/\(chatID)/updated:on": timestamp,
+            
+            "messages/\(messageKey)/id": messageKey,
+            "messages/\(messageKey)/chat": "\(chatID)",
+            "messages/\(messageKey)/author": meID,
+            "messages/\(messageKey)/content": content.trimmingCharacters(in: .whitespacesAndNewlines),
+            "messages/\(messageKey)/created:on": timestamp,
+            
             "chat:messages/\(chatID)/\(messageKey)/created:on": timestamp
         ]
         
