@@ -22,7 +22,8 @@ public class OnlinePresenceSwitcher: ChikaCore.OnlinePresenceSwitcher {
     public func switchToOnline(withCompletion completion: @escaping (Result<OK>) -> Void) -> Bool {
         let rootRef = database.reference()
         let connectedRef = rootRef.child(".info/connected")
-        let meID = self.meID
+        
+        let authUserID = meID
         
         connectedRef.observe(.value, with: { snapshot in
             guard let connected = snapshot.value as? Bool, connected else {
@@ -30,11 +31,17 @@ public class OnlinePresenceSwitcher: ChikaCore.OnlinePresenceSwitcher {
                 return
             }
             
-            let presenceRef = rootRef.child("person:presence/\(meID)")
-            presenceRef.onDisconnectSetValue(["is:active": false, "active:on": ServerValue.timestamp()])
-            presenceRef.setValue(["is:active": true, "active:on": ServerValue.timestamp()])
+            let presenceRef = rootRef.child("person:presence/\(authUserID)")
             
-            completion(.ok(OK("switched presence to online")))
+            presenceRef.onDisconnectSetValue(["is:active": false, "active:on": ServerValue.timestamp()])
+            presenceRef.setValue(["is:active": true, "active:on": ServerValue.timestamp()]) { error, _ in
+                guard error == nil else {
+                    completion(.err(error!))
+                    return
+                }
+                
+                completion(.ok(OK("switched presence to online")))
+            }
             
         }) { error in
             completion(.err(error))
