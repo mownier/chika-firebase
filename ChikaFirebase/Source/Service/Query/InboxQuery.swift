@@ -27,7 +27,7 @@ public class InboxQuery: ChikaCore.InboxQuery {
     }
     
     public func getInbox(withCompletion completion: @escaping (Result<[Chat]>) -> Void) -> Bool {
-        let databaseQuery = database.reference().child("person:inbox/\(meID)").queryOrdered(byChild: "updated:on")
+        let databaseQuery = database.reference().child("person:inbox/\(meID)").queryOrderedByKey()
         
         let getChatsBlock = getChats
         let getChatIDsBlock = getChatIDs
@@ -64,7 +64,16 @@ public class InboxQuery: ChikaCore.InboxQuery {
     
     private func getChats(_ chatIDs: [ID], _ completion: @escaping (Result<[Chat]>) -> Void) {
         let _ = chatQuery.getChats(for: chatIDs) { result in
-            completion(result)
+            switch result {
+            case .ok(let chats):
+                let filtered = chats.filter({ !"\($0.recent.id)".isEmpty })
+                let sorted = filtered.sorted(by: { $0.recent.date > $1.recent.date })
+                completion(.ok(sorted))
+                
+            case .err(let error):
+                completion(.err(error))
+            }
         }
     }
+    
 }
