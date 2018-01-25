@@ -26,7 +26,7 @@ public class ChatCreator: ChikaCore.ChatCreator {
         self.init(meID: meID, database: database, chatQuery: chatQuery)
     }
     
-    public func createChat(withTitle title: String, message: String, participantIDs: [ID], completion: @escaping (Result<Chat>) -> Void) -> Bool {
+    public func createChat(withTitle title: String, participantIDs: [ID], completion: @escaping (Result<Chat>) -> Void) -> Bool {
         guard !meID.isEmpty else {
             completion(.err(Error("current user ID is empty")))
             return false
@@ -42,7 +42,7 @@ public class ChatCreator: ChikaCore.ChatCreator {
         }
         
         let rootRef = database.reference()
-        let (chatID, values) = getChatIDAndValuesForUpdate(title, message, personIDs)
+        let (chatID, values) = getChatIDAndValuesForUpdate(title, personIDs)
         let getCreatedChatBlock = getCreatedChat
         
         rootRef.updateChildValues(values) { error, _ in
@@ -76,44 +76,28 @@ public class ChatCreator: ChikaCore.ChatCreator {
         }
     }
     
-    private func getChatIDAndValuesForUpdate(_ title: String, _ message: String, _ personIDs: [ID]) -> (ID, [String: Any]) {
+    private func getChatIDAndValuesForUpdate(_ title: String, _ personIDs: [ID]) -> (ID, [String: Any]) {
         let rootRef = database.reference()
         let chatsRef = rootRef.child("chats")
         
+        let title = title.isEmpty ? "New Chat" : title
         let chatKey = chatsRef.childByAutoId().key
         let timestamp = ServerValue.timestamp()
         
         var values: [String: Any] = [:]
-        var participants: [String: Bool] = [:]
+        
+        values["chat:participant:title/\(chatKey)/\(meID)"] = title
         
         for personID in personIDs {
-            participants["\(personID)"] = true
-            values["person:inbox/\(personID)/\(chatKey)/updated:on"] = timestamp
+            values["person:inbox/\(personID)/\(chatKey)"] = true
+            values["chat:participants/\(chatKey)/\(personID)"] = true
         }
         
-        let newChat: [String: Any] = [
-            "id": chatKey,
-            "title": title,
-            "creator": meID,
-            "created:on": timestamp,
-            "updated:on": timestamp,
-            "participants": participants
-        ]
-        
-        values["chats/\(chatKey)"] = newChat
-        
-        if !message.isEmpty {
-            let messageKey = rootRef.child("messages").childByAutoId().key
-            let message: [String: Any] = [
-                "id": messageKey,
-                "chat": chatKey,
-                "author": meID,
-                "content": message.trimmingCharacters(in: .whitespacesAndNewlines),
-                "created:on": timestamp
-            ]
-            values["messages/\(messageKey)"] = message
-            values["chat:messages/\(chatKey)/\(messageKey)/created:on"] = timestamp
-        }
+        values["chats/\(chatKey)/id"] = chatKey
+        values["chats/\(chatKey)/title"] = title
+        values["chats/\(chatKey)/creator"] = meID
+        values["chats/\(chatKey)/created:on"] = timestamp
+        values["chats/\(chatKey)/updated:on"] = timestamp
         
         return (ID(chatKey), values)
     }
