@@ -60,6 +60,8 @@ public class ChatQuery: ChikaCore.ChatQuery {
     
     private func getChat(_ chatID: ID, _ chatCounterUpdate: @escaping (Chat?) -> Void) {
         let chatsRef = database.reference().child("chats/\(chatID)")
+        let chatMessagesRef = database.reference().child("chat:messages/\(chatID)")
+        let getChatTitleBlock = getChatTitle
         let getRecentChatMessageBlock = getRecentChatMessage
         
         chatsRef.observeSingleEvent(of: .value, with: { snapshot in
@@ -73,7 +75,17 @@ public class ChatQuery: ChikaCore.ChatQuery {
             chat.title = info["title"] as? String ?? ""
             chat.creatorID = ID(info["creator"] as? String ?? "")
             
-            getRecentChatMessageBlock(chat, chatCounterUpdate)
+            chatMessagesRef.observeSingleEvent(of: .value, with: { snapshot in
+                guard snapshot.exists() else {
+                    getChatTitleBlock(chat, chatCounterUpdate)
+                    return
+                }
+                
+                getRecentChatMessageBlock(chat, chatCounterUpdate)
+                
+            }) { _ in
+                getChatTitleBlock(chat, chatCounterUpdate)
+            }
             
         }) { _ in
             chatCounterUpdate(nil)
