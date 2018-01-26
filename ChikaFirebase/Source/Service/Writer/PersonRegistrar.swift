@@ -22,20 +22,17 @@ public class PersonRegistrar: ChikaCore.PersonRegistrar {
     }
     
     public func registerPerson(withCompletion completion: @escaping (Result<OK>) -> Void) -> Bool {
-        var searchValue: [String: String] = [:]
-        var personValue = ["id": meID]
+        var values: [String: Any] = [
+            "persons/\(meID)/id": meID,
+            "person:email/\(meID)": email
+        ]
         
         if let displayName = email.split(separator: "@").first, !displayName.isEmpty {
-            searchValue["email"] = String(displayName)
-            searchValue["display:name"] = String(displayName)
-            personValue["display:name"] = String(displayName)
+            values["person:search/\(meID)/email"] = String(displayName)
+            values["person:search/\(meID)/display:name"] = String(displayName)
+
+            values["persons/\(meID)/display:name"] = String(displayName)
         }
-        
-        let values: [String: Any] = [
-            "persons/\(meID)": personValue,
-            "person:email/\(meID)/email": email,
-            "persons:search/\(meID)": searchValue,
-        ]
         
         let rootRef = database.reference()
         rootRef.updateChildValues(values) { error, _ in
