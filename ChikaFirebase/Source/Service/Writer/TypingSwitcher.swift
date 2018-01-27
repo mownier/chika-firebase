@@ -20,11 +20,21 @@ public class TypingSwitcher: ChikaCore.TypingSwitcher {
     }
     
     public func switchTypingStatus(to status: TypingStatus, for chatID: ID, completion: @escaping (Result<OK>) -> Void) -> Bool {
-        let isTyping = status == .typing ? true : false
-        let typingStatusRef = database.reference().child("chat:typing:status/\(chatID)/\(meID)")
+        guard !meID.isEmpty else {
+            completion(.err(Error("current user ID is empty")))
+            return false
+        }
         
-
-        typingStatusRef.setValue(isTyping) { error, _ in
+        guard !"\(chatID)".isEmpty else {
+            completion(.err(Error("chat ID is empty")))
+            return false
+        }
+        
+        let values = [
+            "chat:typing:status/\(chatID)/\(meID)": status == .typing ? true : false
+        ]
+        
+        database.reference().updateChildValues(values) { error, _ in
             guard error == nil else {
                 completion(.err(error!))
                 return
