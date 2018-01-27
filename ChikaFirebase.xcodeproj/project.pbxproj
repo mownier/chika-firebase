@@ -39,7 +39,6 @@
 		48D32217201B7016005A1AB8 /* DisplayNameUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D32216201B7016005A1AB8 /* DisplayNameUpdater.swift */; };
 		48D32219201B7020005A1AB8 /* NameUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D32218201B7020005A1AB8 /* NameUpdater.swift */; };
 		48EA38882015AA70003B7399 /* PersonRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EA38872015AA70003B7399 /* PersonRegistrar.swift */; };
-		48EA388A2015B085003B7399 /* PersonUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EA38892015B085003B7399 /* PersonUpdater.swift */; };
 		48EA388C2015B63A003B7399 /* TypingSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EA388B2015B63A003B7399 /* TypingSwitcher.swift */; };
 		48ED7F422008710900FE0C1A /* PasswordUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED7F412008710900FE0C1A /* PasswordUpdaterTests.swift */; };
 		48ED7F44200873CB00FE0C1A /* RegistrarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED7F43200873CB00FE0C1A /* RegistrarTests.swift */; };
@@ -103,7 +102,6 @@
 		48D32216201B7016005A1AB8 /* DisplayNameUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNameUpdater.swift; sourceTree = "<group>"; };
 		48D32218201B7020005A1AB8 /* NameUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameUpdater.swift; sourceTree = "<group>"; };
 		48EA38872015AA70003B7399 /* PersonRegistrar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRegistrar.swift; sourceTree = "<group>"; };
-		48EA38892015B085003B7399 /* PersonUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonUpdater.swift; sourceTree = "<group>"; };
 		48EA388B2015B63A003B7399 /* TypingSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingSwitcher.swift; sourceTree = "<group>"; };
 		48ED7F412008710900FE0C1A /* PasswordUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordUpdaterTests.swift; sourceTree = "<group>"; };
 		48ED7F43200873CB00FE0C1A /* RegistrarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarTests.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 				480F27AC2012408600156AA7 /* OfflinePresenceSwitcher.swift */,
 				480F27AE2012431000156AA7 /* OnlinePresenceSwitcher.swift */,
 				48EA38872015AA70003B7399 /* PersonRegistrar.swift */,
-				48EA38892015B085003B7399 /* PersonUpdater.swift */,
 				48EA388B2015B63A003B7399 /* TypingSwitcher.swift */,
 			);
 			path = Writer;
@@ -539,7 +536,6 @@
 			files = (
 				480F27AB2012352E00156AA7 /* MessageCreator.swift in Sources */,
 				48B5B320200710A600D091B2 /* Registrar.swift in Sources */,
-				48EA388A2015B085003B7399 /* PersonUpdater.swift in Sources */,
 				480F27AF2012431000156AA7 /* OnlinePresenceSwitcher.swift in Sources */,
 				48B5B322200715A200D091B2 /* SignIn.swift in Sources */,
 				480F27AD2012408600156AA7 /* OfflinePresenceSwitcher.swift in Sources */,
