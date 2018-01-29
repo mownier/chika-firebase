@@ -40,6 +40,17 @@ Pod::Spec.new do |s|
     ss.source_files = 'ChikaFirebase/Source/Service/Writer/*.swift'
   end
 
+  s.subspec 'Listener' do |ss|
+    ss.dependency 'FirebaseCommunity/Auth'
+    ss.dependency 'FirebaseCommunity/Database'
+    
+    ss.dependency 'ChikaCore/Error'
+    ss.dependency 'ChikaCore/Service:Listener'
+    ss.dependency 'ChikaCore/Service:Listener:Object'
+    
+    ss.source_files = 'ChikaFirebase/Source/Service/Listener/*.swift'
+  end
+
   s.subspec 'Validator' do |ss|
     ss.dependency 'ChikaFirebase/Validator:Auth'
   end
