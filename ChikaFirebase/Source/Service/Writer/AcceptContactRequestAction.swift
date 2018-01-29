@@ -58,18 +58,13 @@ public class AcceptContactRequestAction: ChikaCore.AcceptContactRequestAction {
         let chatKey = chatsRef.childByAutoId().key
         let timestamp = ServerValue.timestamp()
         
-        let newChat: [String: Any] = [
-            "id": chatKey,
-            "created:on": timestamp,
-            "updated:on": timestamp,
-            "participants": [
-                "\(meID)": true,
-                "\(requestorID)": true
-            ]
-        ]
-        
         let values: [AnyHashable: Any] = [
-            "chats/\(chatKey)": newChat,
+            "chats/\(chatKey)/id": chatKey,
+            "chats/\(chatKey)/created:on": timestamp,
+            "chats/\(chatKey)/updated:on": timestamp,
+            
+            "chat:participants/\(chatKey)/\(meID)": true,
+            "chat:participants/\(chatKey)/\(requestorID)": true,
             
             "person:contacts/\(meID)/\(requestorID)/chat": chatKey,
             "person:contacts/\(meID)/\(requestorID)/since": timestamp,
@@ -79,7 +74,7 @@ public class AcceptContactRequestAction: ChikaCore.AcceptContactRequestAction {
             
             "person:contact:request:established/\(meID)/\(requestorID)": NSNull(),
             "person:contact:request:established/\(requestorID)/\(meID)": NSNull(),
-            
+
             "contact:requests/\(contactRequestID)": NSNull()
         ]
         
