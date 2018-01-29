@@ -24,7 +24,8 @@ public class PersonRegistrar: ChikaCore.PersonRegistrar {
     public func registerPerson(withCompletion completion: @escaping (Result<OK>) -> Void) -> Bool {
         var values: [String: Any] = [
             "persons/\(meID)/id": meID,
-            "person:email/\(meID)": email
+            "person:email/\(meID)": email,
+            "person:contacts/\(meID)": true
         ]
         
         if let displayName = email.split(separator: "@").first, !displayName.isEmpty {
