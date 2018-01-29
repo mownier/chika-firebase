@@ -89,7 +89,7 @@ public class ChatCreator: ChikaCore.ChatCreator {
         values["chat:participant:title/\(chatKey)/\(meID)"] = title
         
         for personID in personIDs {
-            values["person:inbox/\(personID)/\(chatKey)"] = true
+            values["person:inbox/\(personID)/\(chatKey)/participant:since"] = timestamp
             values["chat:participants/\(chatKey)/\(personID)"] = true
         }
         

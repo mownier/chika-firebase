@@ -77,9 +77,10 @@ public class AddChatParticipantsAction: ChikaCore.AddChatParticipantsAction {
     
     private func updateChildValues(_ nonParticipantIDs: [ID], _ chatID: ID, _ completion: @escaping (Result<OK>) -> Void) {
         var values: [String: Any] = [:]
+        let timestamp = ServerValue.timestamp()
         
         for personID in nonParticipantIDs {
-            values["person:inbox/\(personID)/\(chatID)"] = true
+            values["person:inbox/\(personID)/\(chatID)/participant:since"] = timestamp
             values["chat:participants/\(chatID)/\(personID)"] = true
         }
         
