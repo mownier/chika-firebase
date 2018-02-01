@@ -41,6 +41,7 @@
 		48C8830F201D94580008C4FE /* AddedContactListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C8830E201D94580008C4FE /* AddedContactListener.swift */; };
 		48C88315201D9FF50008C4FE /* RecentChatMessageListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C88314201D9FF50008C4FE /* RecentChatMessageListener.swift */; };
 		48C88317201DA9210008C4FE /* ReceivedContactRequestListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C88316201DA9210008C4FE /* ReceivedContactRequestListener.swift */; };
+		48C971C8201F69EA008BEC1A /* PersonSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C971C7201F69EA008BEC1A /* PersonSearch.swift */; };
 		48CEB51C2006042400D3C681 /* ChikaFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CEB5122006042400D3C681 /* ChikaFirebase.framework */; };
 		48CEB5232006042400D3C681 /* ChikaFirebase.h in Headers */ = {isa = PBXBuildFile; fileRef = 48CEB5152006042400D3C681 /* ChikaFirebase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48D32217201B7016005A1AB8 /* DisplayNameUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D32216201B7016005A1AB8 /* DisplayNameUpdater.swift */; };
@@ -108,6 +109,7 @@
 		48C8830E201D94580008C4FE /* AddedContactListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedContactListener.swift; sourceTree = "<group>"; };
 		48C88314201D9FF50008C4FE /* RecentChatMessageListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatMessageListener.swift; sourceTree = "<group>"; };
 		48C88316201DA9210008C4FE /* ReceivedContactRequestListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedContactRequestListener.swift; sourceTree = "<group>"; };
+		48C971C7201F69EA008BEC1A /* PersonSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearch.swift; sourceTree = "<group>"; };
 		48CEB5122006042400D3C681 /* ChikaFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChikaFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48CEB5152006042400D3C681 /* ChikaFirebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChikaFirebase.h; sourceTree = "<group>"; };
 		48CEB5162006042400D3C681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				48B5B312200704B100D091B2 /* Auth */,
 				48C8830D201D942B0008C4FE /* Listener */,
 				48ED7F4920087FC400FE0C1A /* Query */,
+				48C971C6201F69D2008BEC1A /* Search */,
 				4894D9AD2010EE640054F674 /* Writer */,
 			);
 			path = Service;
@@ -270,6 +273,14 @@
 				488B6E21201E099F007619EC /* TypingStatusListener.swift */,
 			);
 			path = Listener;
+			sourceTree = "<group>";
+		};
+		48C971C6201F69D2008BEC1A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				48C971C7201F69EA008BEC1A /* PersonSearch.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		48CEB5082006042400D3C681 = {
@@ -523,6 +534,7 @@
 				"${BUILT_PRODUCTS_DIR}/FirebaseCommunity/FirebaseCommunity.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/TNExtensions/TNExtensions.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -531,6 +543,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCommunity.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TNExtensions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,6 +584,7 @@
 				480F27AD2012408600156AA7 /* OfflinePresenceSwitcher.swift in Sources */,
 				48B5B31E20070F8E00D091B2 /* PasswordUpdater.swift in Sources */,
 				48D32219201B7020005A1AB8 /* NameUpdater.swift in Sources */,
+				48C971C8201F69EA008BEC1A /* PersonSearch.swift in Sources */,
 				48D32217201B7016005A1AB8 /* DisplayNameUpdater.swift in Sources */,
 				48584B57201DB07700B2190A /* AddedIntoChatListener.swift in Sources */,
 				48B5B31C20070C3D00D091B2 /* EmailUpdater.swift in Sources */,
