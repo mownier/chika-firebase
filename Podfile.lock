@@ -70,11 +70,13 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
   - GTMSessionFetcher/Core (1.1.12)
   - leveldb-library (1.20)
+  - TNExtensions/EmailValidator (0.3)
 
 DEPENDENCIES:
   - ChikaCore
   - FirebaseCommunity/Auth
   - FirebaseCommunity/Database
+  - TNExtensions/EmailValidator
 
 SPEC CHECKSUMS:
   ChikaCore: 7c40700423fc0432182939fd006b4c04b9f18600
@@ -82,7 +84,8 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  TNExtensions: efc8ec235b5a0218b941f5e82d2d90195ce8c659
 
-PODFILE CHECKSUM: 684dbd53786ad78edcc13b0189d6b900e4ad5f72
+PODFILE CHECKSUM: c6d1746716ab2f4f3ffd17f8898375e1309fe18a
 
 COCOAPODS: 1.3.1
