@@ -348,6 +348,7 @@ Pod::Spec.new do |s|
     ss.dependency 'ChikaFirebase/Listener:ReceivedContactRequest'
     ss.dependency 'ChikaFirebase/Listener:RecentChatMessage'
     ss.dependency 'ChikaFirebase/Listener:TypingStatus'
+    ss.dependency 'ChikaFirebase/Listener:ChatParticipantPresence'
   end
 
   s.subspec 'Listener:AddedContact' do |ss|
@@ -433,6 +434,16 @@ Pod::Spec.new do |s|
     ss.dependency 'ChikaFirebase/Query:Person'
 
     ss.source_files = 'ChikaFirebase/Source/Service/Listener/TypingStatusListener.swift'
+  end
+
+  s.subspec 'Listener:ChatParticipantPresence' do |ss|
+    ss.dependency 'FirebaseCommunity/Auth'
+    ss.dependency 'FirebaseCommunity/Database'
+
+    ss.dependency 'ChikaCore/Error'
+    ss.dependency 'ChikaCore/Service:Listener'
+
+    ss.source_files = 'ChikaFirebase/Source/Service/Listener/ChatParticipantPresenceListener.swift'
   end
 
   s.subspec 'Search' do |ss|
