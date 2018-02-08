@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'ChikaFirebase'
-  s.version  = '0.2'
+  s.version  = '0.3'
   s.summary  = 'Chika services implemented via Firebase'
   s.platform = :ios, '11.0'
   s.license  = { :type => 'MIT', :file => 'LICENSE' }
