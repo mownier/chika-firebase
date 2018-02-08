@@ -15,6 +15,7 @@
 		480F27AB2012352E00156AA7 /* MessageCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F27AA2012352E00156AA7 /* MessageCreator.swift */; };
 		480F27AD2012408600156AA7 /* OfflinePresenceSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F27AC2012408600156AA7 /* OfflinePresenceSwitcher.swift */; };
 		480F27AF2012431000156AA7 /* OnlinePresenceSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F27AE2012431000156AA7 /* OnlinePresenceSwitcher.swift */; };
+		48562091202C34AA0025343B /* ChatParticipantPresenceListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48562090202C34AA0025343B /* ChatParticipantPresenceListener.swift */; };
 		48584B57201DB07700B2190A /* AddedIntoChatListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48584B56201DB07700B2190A /* AddedIntoChatListener.swift */; };
 		48584B59201DB71C00B2190A /* ChatTitleUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48584B58201DB71C00B2190A /* ChatTitleUpdateListener.swift */; };
 		488421C7200C88B70027A144 /* MyInfoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488421C6200C88B70027A144 /* MyInfoQuery.swift */; };
@@ -83,6 +84,7 @@
 		480F27AA2012352E00156AA7 /* MessageCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCreator.swift; sourceTree = "<group>"; };
 		480F27AC2012408600156AA7 /* OfflinePresenceSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflinePresenceSwitcher.swift; sourceTree = "<group>"; };
 		480F27AE2012431000156AA7 /* OnlinePresenceSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlinePresenceSwitcher.swift; sourceTree = "<group>"; };
+		48562090202C34AA0025343B /* ChatParticipantPresenceListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatParticipantPresenceListener.swift; sourceTree = "<group>"; };
 		48584B56201DB07700B2190A /* AddedIntoChatListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedIntoChatListener.swift; sourceTree = "<group>"; };
 		48584B58201DB71C00B2190A /* ChatTitleUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitleUpdateListener.swift; sourceTree = "<group>"; };
 		488421C6200C88B70027A144 /* MyInfoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoQuery.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			children = (
 				48C8830E201D94580008C4FE /* AddedContactListener.swift */,
 				48584B56201DB07700B2190A /* AddedIntoChatListener.swift */,
+				48562090202C34AA0025343B /* ChatParticipantPresenceListener.swift */,
 				48584B58201DB71C00B2190A /* ChatTitleUpdateListener.swift */,
 				488B6E23201E0F7C007619EC /* PresenceListener.swift */,
 				48C88316201DA9210008C4FE /* ReceivedContactRequestListener.swift */,
@@ -604,6 +607,7 @@
 				4894D9B12010F8940054F674 /* AddChatParticipantsAction.swift in Sources */,
 				4802C98D2011912200920C8B /* ChatCreator.swift in Sources */,
 				48ED7F532008807D00FE0C1A /* MessageQuery.swift in Sources */,
+				48562091202C34AA0025343B /* ChatParticipantPresenceListener.swift in Sources */,
 				4894D9AF2010EE9E0054F674 /* AcceptContactRequestAction.swift in Sources */,
 				48ED7F4F2008802500FE0C1A /* ContactQuery.swift in Sources */,
 				48C8830F201D94580008C4FE /* AddedContactListener.swift in Sources */,
