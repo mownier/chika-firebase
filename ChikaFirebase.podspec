@@ -418,7 +418,7 @@ Pod::Spec.new do |s|
     ss.dependency 'ChikaCore/Service:Listener'
     ss.dependency 'ChikaCore/Service:Query'
 
-    ss.dependency 'ChikaFirebase/Query:Message'
+    ss.dependency 'ChikaFirebase/Query:Chat'
 
     ss.source_files = 'ChikaFirebase/Source/Service/Listener/RecentChatMessageListener.swift'
   end
