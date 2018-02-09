@@ -13,21 +13,21 @@ public class RecentChatMessageListener: ChikaCore.RecentChatMessageListener {
 
     var meID: String
     var database: Database
-    var messageQuery: ChikaCore.MessageQuery
+    var chatQuery: ChikaCore.ChatQuery
     
     var handles: [ID: UInt]
     
-    public init(meID: String, database: Database, messageQuery: ChikaCore.MessageQuery) {
+    public init(meID: String, database: Database, chatQuery: ChikaCore.ChatQuery) {
         self.meID = meID
         self.database = database
-        self.messageQuery = messageQuery
+        self.chatQuery = chatQuery
         
         self.handles = [:]
     }
     
     public convenience init(meID: String = FirebaseCommunity.Auth.auth().currentUser?.uid ?? "", database: Database = Database.database()) {
-        let messageQuery = MessageQuery(database: database)
-        self.init(meID: meID, database: database, messageQuery: messageQuery)
+        let chatQuery = ChatQuery(meID: meID, database: database)
+        self.init(meID: meID, database: database, chatQuery: chatQuery)
     }
     
     public func stopAll() -> Bool {
@@ -51,7 +51,7 @@ public class RecentChatMessageListener: ChikaCore.RecentChatMessageListener {
         return true
     }
     
-    public func startListening(on chatID: ID, callback: @escaping (Result<RecentChatMessageListenerObject>) -> Void) -> Bool {
+    public func startListening(on chatID: ID, callback: @escaping (Result<Chat>) -> Void) -> Bool {
         guard !meID.isEmpty else {
             callback(.err(Error("current user ID is empty")))
             return false
@@ -68,11 +68,10 @@ public class RecentChatMessageListener: ChikaCore.RecentChatMessageListener {
         }
         
         let query = database.reference().child("chat:messages/\(chatID)").queryOrdered(byChild: "created:on").queryLimited(toLast: 1)
-        let getMessageBlock = getMessage
+        let getChatBlock = getChat
         
-        let handle = query.observe(.childAdded, with: { snapshot in
-            let messageID = ID(snapshot.key)
-            getMessageBlock(messageID, chatID, callback)
+        let handle = query.observe(.childAdded, with: { _ in
+            getChatBlock(chatID, callback)
             
         }) { error in
             callback(.err(error))
@@ -83,18 +82,17 @@ public class RecentChatMessageListener: ChikaCore.RecentChatMessageListener {
         return true
     }
     
-    private func getMessage(_ messageID: ID, _ chatID: ID, _ callback: @escaping (Result<RecentChatMessageListenerObject>) -> Void) {
-        let _ = messageQuery.getMessages(for: [messageID]) { result in
+    func getChat(_ chatID: ID, _ callback: @escaping (Result<Chat>) -> Void) {
+        let _ = chatQuery.getChats(for: [chatID]) { result in
             switch result {
-            case .ok(let messages):
-                guard messages.map({ $0.id }) == [messageID], let message = messages.first else {
-                    callback(.err(Error("can not get info of the recent chat message")))
+            case .ok(let chats):
+                guard chats.map({ $0.id }) == [chatID], let chat = chats.first else {
+                    callback(.err(Error("could not get chat info")))
                     return
                 }
                 
-                let object = RecentChatMessageListenerObject(chatID: chatID, message: message)
-                callback(.ok(object))
-            
+                callback(.ok(chat))
+                
             case .err(let error):
                 callback(.err(error))
             }
