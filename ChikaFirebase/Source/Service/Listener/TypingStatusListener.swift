@@ -77,7 +77,7 @@ public class TypingStatusListener: ChikaCore.TypingStatusListener {
             let isTyping = snapshot.value as? Bool ?? false
             let typingStatus = isTyping ? TypingStatus.typing : TypingStatus.notTyping
             
-            getPersonBlock(personID, typingStatus, callback)
+            getPersonBlock(personID, chatID, typingStatus, callback)
             
         }) { error in
             callback(.err(error))
@@ -88,7 +88,7 @@ public class TypingStatusListener: ChikaCore.TypingStatusListener {
         return true
     }
     
-    private func getPerson(_ personID: ID, _ typingStatus: TypingStatus, _ callback: @escaping (Result<TypingStatusListenerObject>) -> Void) {
+    private func getPerson(_ personID: ID, _ chatID: ID, _ typingStatus: TypingStatus, _ callback: @escaping (Result<TypingStatusListenerObject>) -> Void) {
         let _ = personQuery.getPersons(for: [personID]) { result in
             switch result {
             case .ok(let persons):
@@ -97,7 +97,7 @@ public class TypingStatusListener: ChikaCore.TypingStatusListener {
                     return
                 }
                 
-                let object = TypingStatusListenerObject(person: person, status: typingStatus)
+                let object = TypingStatusListenerObject(chatID: chatID, person: person, status: typingStatus)
                 callback(.ok(object))
                 
             case .err(let error):
