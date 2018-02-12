@@ -30,12 +30,25 @@ public class SeenMessageMarker: ChikaCore.SeenMessageMarker {
             return false
         }
         
-        let chatRef = database.reference().child("messages/\(messageID)/chat")
+        let rootRef = database.reference()
+        let chatRef = rootRef.child("messages/\(messageID)/chat")
+        let messageReadStateRef = rootRef.child("message:read:state/\(messageID)/\(meID)")
+        
         let markSeenBlock = markSeen
         
-        chatRef.observeSingleEvent(of: .value, with: { snapshot in
-            let chatKey = snapshot.value as? String ?? ""
-            markSeenBlock(messageID, ID(chatKey), completion)
+        messageReadStateRef.observeSingleEvent(of: .value, with: { snapshot in
+            guard !snapshot.exists() else {
+                completion(.ok(OK("message is already marked as seen")))
+                return
+            }
+            
+            chatRef.observeSingleEvent(of: .value, with: { snapshot in
+                let chatKey = snapshot.value as? String ?? ""
+                markSeenBlock(messageID, ID(chatKey), completion)
+                
+            }) { error in
+                completion(.err(error))
+            }
             
         }) { error in
             completion(.err(error))
@@ -66,15 +79,17 @@ public class SeenMessageMarker: ChikaCore.SeenMessageMarker {
             chatMessageReadStateRef.onDisconnectRemoveValue()
             
             messageReadCountRef.runTransactionBlock({ data -> TransactionResult in
-                guard !(data.value is NSNull) else {
-                    return TransactionResult.success(withValue: data)
+                var newValue: Int = 1
+                
+                if let count = data.value as? Int {
+                    guard count > 0 else {
+                        return TransactionResult.abort()
+                    }
+                    
+                    newValue = count + 1
                 }
                 
-                guard let count = data.value as? Int, count > 0 else {
-                    return TransactionResult.abort()
-                }
-                
-                data.value = count + 1
+                data.value = newValue
                 return TransactionResult.success(withValue: data)
                 
             }) { error, committed, ref in
