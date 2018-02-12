@@ -88,6 +88,8 @@ Pod::Spec.new do |s|
     ss.dependency 'ChikaFirebase/Query:Person'
     ss.dependency 'ChikaFirebase/Query:RecentChatMessage'
     ss.dependency 'ChikaFirebase/Query:ContactRequest'
+    ss.dependency 'ChikaFirebase/Query:UnreadChatMessageCount'
+    ss.dependency 'ChikaFirebase/Query:MessageSeenInfo'
   end
 
   s.subspec 'Query:ChatMessage' do |ss|
@@ -191,6 +193,29 @@ Pod::Spec.new do |s|
     ss.source_files = 'ChikaFirebase/Source/Service/Query/ContactRequestQuery.swift'
   end
 
+  s.subspec 'Query:UnreadChatMessageCount' do |ss|
+    ss.dependency 'FirebaseCommunity/Auth'
+    ss.dependency 'FirebaseCommunity/Database'
+
+    ss.dependency 'ChikaCore/Error'
+    ss.dependency 'ChikaCore/Service:Query'
+
+    ss.dependency 'ChikaFirebase/Query:Person'
+    
+    ss.source_files = 'ChikaFirebase/Source/Service/Query/UnreadChatMessageCountQuery.swift'
+  end
+
+  s.subspec 'Query:MessageSeenInfo' do |ss|
+    ss.dependency 'FirebaseCommunity/Database'
+
+    ss.dependency 'ChikaCore/Error'
+    ss.dependency 'ChikaCore/Service:Query'
+
+    ss.dependency 'ChikaFirebase/Query:Person'
+    
+    ss.source_files = 'ChikaFirebase/Source/Service/Query/MessageSeenInfoQuery.swift'
+  end
+
   s.subspec 'Writer' do |ss|
     ss.dependency 'ChikaFirebase/Writer:AcceptContactRequestAction'
     ss.dependency 'ChikaFirebase/Writer:AddChatParticipantsAction'
@@ -205,6 +230,7 @@ Pod::Spec.new do |s|
     ss.dependency 'ChikaFirebase/Writer:OnlinePresenceSwitcher'
     ss.dependency 'ChikaFirebase/Writer:PersonRegistrar'
     ss.dependency 'ChikaFirebase/Writer:TypingSwitcher'
+    ss.dependency 'ChikaFirebase/Writer:SeenMessageMarker'
   end
 
   s.subspec 'Writer:AcceptContactRequestAction' do |ss|
@@ -340,6 +366,16 @@ Pod::Spec.new do |s|
     ss.source_files = 'ChikaFirebase/Source/Service/Writer/TypingSwitcher.swift'
   end
 
+  s.subspec 'Writer:SeenMessageMarker' do |ss|
+    ss.dependency 'FirebaseCommunity/Auth'
+    ss.dependency 'FirebaseCommunity/Database'
+
+    ss.dependency 'ChikaCore/Error'
+    ss.dependency 'ChikaCore/Service:Writer'
+
+    ss.source_files = 'ChikaFirebase/Source/Service/Writer/SeenMessageMarker.swift'
+  end
+
   s.subspec 'Listener' do |ss|
     ss.dependency 'ChikaFirebase/Listener:AddedContact'
     ss.dependency 'ChikaFirebase/Listener:AddedIntoChat'
@@ -349,6 +385,7 @@ Pod::Spec.new do |s|
     ss.dependency 'ChikaFirebase/Listener:RecentChatMessage'
     ss.dependency 'ChikaFirebase/Listener:TypingStatus'
     ss.dependency 'ChikaFirebase/Listener:ChatParticipantPresence'
+    ss.dependency 'ChikaFirebase/Listener:SeenMessage'
   end
 
   s.subspec 'Listener:AddedContact' do |ss|
@@ -444,6 +481,17 @@ Pod::Spec.new do |s|
     ss.dependency 'ChikaCore/Service:Listener'
 
     ss.source_files = 'ChikaFirebase/Source/Service/Listener/ChatParticipantPresenceListener.swift'
+  end
+
+  s.subspec 'Listener:SeenMessage' do |ss|
+    ss.dependency 'FirebaseCommunity/Database'
+
+    ss.dependency 'ChikaCore/Error'
+    ss.dependency 'ChikaCore/Service:Listener'
+
+    ss.dependency 'ChikaFirebase/Query:Person'
+
+    ss.source_files = 'ChikaFirebase/Source/Service/Listener/SeenMessageListener.swift'
   end
 
   s.subspec 'Search' do |ss|
