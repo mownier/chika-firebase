@@ -28,7 +28,7 @@ public class MessageCreator: ChikaCore.MessageCreator {
     
     public func createMessage(for chatID: ID, content: String, completion: @escaping (Result<Message>) -> Void) -> Bool {
         let rootRef = database.reference()
-        let getMessagesBlock = getMessages
+        let getMessageBlock = getMessage
         let (messageID, values) = getMessageIDAndValuesForUpdate(content, chatID)
         
         rootRef.updateChildValues(values) { error, _ in
@@ -37,20 +37,22 @@ public class MessageCreator: ChikaCore.MessageCreator {
                 return
             }
             
-            getMessagesBlock([messageID], completion)
+            getMessageBlock(messageID, completion)
         }
         
         return true
     }
     
-    private func getMessages(_ messageIDs: [ID], _ completion: @escaping (Result<Message>) -> Void) {
-        let _ = messageQuery.getMessages(for: messageIDs) { result in
+    private func getMessage(_ messageID: ID, _ completion: @escaping (Result<Message>) -> Void) {
+        let _ = messageQuery.getMessages(for: [messageID]) { result in
             switch result {
             case .ok(let messages):
-                guard messageIDs == messages.map({ $0.id })else {
+                guard messages.map({ $0.id }) == [messageID], let message = messages.first else {
                     completion(.err(Error("succesfully written a message but failed to fetch the new message")))
                     return
                 }
+                
+                completion(.ok(message))
                 
             case .err(let error):
                 completion(.err(error))
