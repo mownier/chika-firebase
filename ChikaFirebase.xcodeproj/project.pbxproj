@@ -27,6 +27,9 @@
 		488FDE69200CEE2900307B96 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 488FDE68200CEE2900307B96 /* TestData.json */; };
 		4894D9AF2010EE9E0054F674 /* AcceptContactRequestAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4894D9AE2010EE9E0054F674 /* AcceptContactRequestAction.swift */; };
 		4894D9B12010F8940054F674 /* AddChatParticipantsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4894D9B02010F8940054F674 /* AddChatParticipantsAction.swift */; };
+		489A57CB202F359D00E9930E /* SeenMessageListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489A57CA202F359D00E9930E /* SeenMessageListener.swift */; };
+		489A57CD202F3D1D00E9930E /* UnreadChatMessageCountQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489A57CC202F3D1D00E9930E /* UnreadChatMessageCountQuery.swift */; };
+		48AF9CFD2030916200104704 /* SeenMessageMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AF9CFC2030916200104704 /* SeenMessageMarker.swift */; };
 		48B5B3162007050D00D091B2 /* AccessTokenRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B5B3152007050C00D091B2 /* AccessTokenRefresher.swift */; };
 		48B5B31A2007096B00D091B2 /* AuthValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B5B3192007096B00D091B2 /* AuthValidator.swift */; };
 		48B5B31C20070C3D00D091B2 /* EmailUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B5B31B20070C3D00D091B2 /* EmailUpdater.swift */; };
@@ -43,6 +46,7 @@
 		48C88315201D9FF50008C4FE /* RecentChatMessageListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C88314201D9FF50008C4FE /* RecentChatMessageListener.swift */; };
 		48C88317201DA9210008C4FE /* ReceivedContactRequestListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C88316201DA9210008C4FE /* ReceivedContactRequestListener.swift */; };
 		48C971C8201F69EA008BEC1A /* PersonSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C971C7201F69EA008BEC1A /* PersonSearch.swift */; };
+		48CD4828203007A3002E5F7F /* MessageSeenInfoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CD4827203007A3002E5F7F /* MessageSeenInfoQuery.swift */; };
 		48CEB51C2006042400D3C681 /* ChikaFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CEB5122006042400D3C681 /* ChikaFirebase.framework */; };
 		48CEB5232006042400D3C681 /* ChikaFirebase.h in Headers */ = {isa = PBXBuildFile; fileRef = 48CEB5152006042400D3C681 /* ChikaFirebase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48D32217201B7016005A1AB8 /* DisplayNameUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D32216201B7016005A1AB8 /* DisplayNameUpdater.swift */; };
@@ -96,6 +100,9 @@
 		488FDE68200CEE2900307B96 /* TestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestData.json; sourceTree = "<group>"; };
 		4894D9AE2010EE9E0054F674 /* AcceptContactRequestAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptContactRequestAction.swift; sourceTree = "<group>"; };
 		4894D9B02010F8940054F674 /* AddChatParticipantsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatParticipantsAction.swift; sourceTree = "<group>"; };
+		489A57CA202F359D00E9930E /* SeenMessageListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeenMessageListener.swift; sourceTree = "<group>"; };
+		489A57CC202F3D1D00E9930E /* UnreadChatMessageCountQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadChatMessageCountQuery.swift; sourceTree = "<group>"; };
+		48AF9CFC2030916200104704 /* SeenMessageMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeenMessageMarker.swift; sourceTree = "<group>"; };
 		48B5B3152007050C00D091B2 /* AccessTokenRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenRefresher.swift; sourceTree = "<group>"; };
 		48B5B3192007096B00D091B2 /* AuthValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthValidator.swift; sourceTree = "<group>"; };
 		48B5B31B20070C3D00D091B2 /* EmailUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailUpdater.swift; sourceTree = "<group>"; };
@@ -112,6 +119,7 @@
 		48C88314201D9FF50008C4FE /* RecentChatMessageListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatMessageListener.swift; sourceTree = "<group>"; };
 		48C88316201DA9210008C4FE /* ReceivedContactRequestListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedContactRequestListener.swift; sourceTree = "<group>"; };
 		48C971C7201F69EA008BEC1A /* PersonSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearch.swift; sourceTree = "<group>"; };
+		48CD4827203007A3002E5F7F /* MessageSeenInfoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSeenInfoQuery.swift; sourceTree = "<group>"; };
 		48CEB5122006042400D3C681 /* ChikaFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChikaFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48CEB5152006042400D3C681 /* ChikaFirebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChikaFirebase.h; sourceTree = "<group>"; };
 		48CEB5162006042400D3C681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -175,6 +183,7 @@
 				480F27AC2012408600156AA7 /* OfflinePresenceSwitcher.swift */,
 				480F27AE2012431000156AA7 /* OnlinePresenceSwitcher.swift */,
 				48EA38872015AA70003B7399 /* PersonRegistrar.swift */,
+				48AF9CFC2030916200104704 /* SeenMessageMarker.swift */,
 				48EA388B2015B63A003B7399 /* TypingSwitcher.swift */,
 			);
 			path = Writer;
@@ -273,6 +282,7 @@
 				488B6E23201E0F7C007619EC /* PresenceListener.swift */,
 				48C88316201DA9210008C4FE /* ReceivedContactRequestListener.swift */,
 				48C88314201D9FF50008C4FE /* RecentChatMessageListener.swift */,
+				489A57CA202F359D00E9930E /* SeenMessageListener.swift */,
 				488B6E21201E099F007619EC /* TypingStatusListener.swift */,
 			);
 			path = Listener;
@@ -334,12 +344,14 @@
 				48ED7F4A20087FE400FE0C1A /* ChatMessageQuery.swift */,
 				48ED7F4C2008800700FE0C1A /* ChatQuery.swift */,
 				48ED7F4E2008802500FE0C1A /* ContactQuery.swift */,
+				48FE2A94201C40D300EE6860 /* ContactRequestQuery.swift */,
 				48ED7F502008805E00FE0C1A /* InboxQuery.swift */,
 				48ED7F522008807D00FE0C1A /* MessageQuery.swift */,
 				488421C6200C88B70027A144 /* MyInfoQuery.swift */,
 				48ED7F542008809A00FE0C1A /* PersonQuery.swift */,
 				48ED7F56200880BE00FE0C1A /* RecentChatMessageQuery.swift */,
-				48FE2A94201C40D300EE6860 /* ContactRequestQuery.swift */,
+				489A57CC202F3D1D00E9930E /* UnreadChatMessageCountQuery.swift */,
+				48CD4827203007A3002E5F7F /* MessageSeenInfoQuery.swift */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -584,6 +596,7 @@
 				48B5B320200710A600D091B2 /* Registrar.swift in Sources */,
 				480F27AF2012431000156AA7 /* OnlinePresenceSwitcher.swift in Sources */,
 				48B5B322200715A200D091B2 /* SignIn.swift in Sources */,
+				489A57CD202F3D1D00E9930E /* UnreadChatMessageCountQuery.swift in Sources */,
 				480F27AD2012408600156AA7 /* OfflinePresenceSwitcher.swift in Sources */,
 				48B5B31E20070F8E00D091B2 /* PasswordUpdater.swift in Sources */,
 				48D32219201B7020005A1AB8 /* NameUpdater.swift in Sources */,
@@ -592,6 +605,8 @@
 				48584B57201DB07700B2190A /* AddedIntoChatListener.swift in Sources */,
 				48B5B31C20070C3D00D091B2 /* EmailUpdater.swift in Sources */,
 				480F27A520122FEE00156AA7 /* ChatTitleUpdater.swift in Sources */,
+				489A57CB202F359D00E9930E /* SeenMessageListener.swift in Sources */,
+				48CD4828203007A3002E5F7F /* MessageSeenInfoQuery.swift in Sources */,
 				48ED7F4B20087FE400FE0C1A /* ChatMessageQuery.swift in Sources */,
 				48B5B3162007050D00D091B2 /* AccessTokenRefresher.swift in Sources */,
 				480F27A7201230B600156AA7 /* ContactRequestSender.swift in Sources */,
@@ -614,6 +629,7 @@
 				48584B59201DB71C00B2190A /* ChatTitleUpdateListener.swift in Sources */,
 				480F27A92012340600156AA7 /* IgnoreContactRequestAction.swift in Sources */,
 				48B5B31A2007096B00D091B2 /* AuthValidator.swift in Sources */,
+				48AF9CFD2030916200104704 /* SeenMessageMarker.swift in Sources */,
 				48B5B3242007174D00D091B2 /* SignOut.swift in Sources */,
 				48FE2A95201C40D300EE6860 /* ContactRequestQuery.swift in Sources */,
 				488B6E22201E099F007619EC /* TypingStatusListener.swift in Sources */,
