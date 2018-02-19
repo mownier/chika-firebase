@@ -73,7 +73,9 @@ public class ChatQuery: ChikaCore.ChatQuery {
             var chat = Chat()
             chat.id = chatID
             chat.title = info["title"] as? String ?? ""
+            chat.photoURL = info["photo:url"] as? String ?? ""
             chat.creatorID = ID(info["creator"] as? String ?? "")
+            chat.createdOn = Date(timeIntervalSince1970: (info["created:on"] as? Double ?? 0) / 1000)
             
             chatMessagesRef.observeSingleEvent(of: .value, with: { snapshot in
                 guard snapshot.exists() else {
