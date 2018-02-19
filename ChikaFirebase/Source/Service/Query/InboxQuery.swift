@@ -66,8 +66,12 @@ public class InboxQuery: ChikaCore.InboxQuery {
         let _ = chatQuery.getChats(for: chatIDs) { result in
             switch result {
             case .ok(let chats):
-                let filtered = chats.filter({ !"\($0.recent.id)".isEmpty })
-                let sorted = filtered.sorted(by: { $0.recent.date > $1.recent.date })
+                let sorted = chats.sorted(by: {
+                    let date1: Date = $0.recent.id.isEmpty ? $0.createdOn : $0.recent.date
+                    let date2: Date = $1.recent.id.isEmpty ? $1.createdOn : $1.recent.date
+                    
+                    return date1 > date2
+                })
                 completion(.ok(sorted))
                 
             case .err(let error):
