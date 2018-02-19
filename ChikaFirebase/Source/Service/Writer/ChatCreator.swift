@@ -26,7 +26,7 @@ public class ChatCreator: ChikaCore.ChatCreator {
         self.init(meID: meID, database: database, chatQuery: chatQuery)
     }
     
-    public func createChat(withTitle title: String, participantIDs: [ID], completion: @escaping (Result<Chat>) -> Void) -> Bool {
+    public func createChat(withTitle title: String, participantIDs: [ID], photoURL: String, completion: @escaping (Result<Chat>) -> Void) -> Bool {
         guard !meID.isEmpty else {
             completion(.err(Error("current user ID is empty")))
             return false
@@ -42,7 +42,7 @@ public class ChatCreator: ChikaCore.ChatCreator {
         }
         
         let rootRef = database.reference()
-        let (chatID, values) = getChatIDAndValuesForUpdate(title, personIDs)
+        let (chatID, values) = getChatIDAndValuesForUpdate(title, personIDs, photoURL)
         let getCreatedChatBlock = getCreatedChat
         
         rootRef.updateChildValues(values) { error, _ in
@@ -76,7 +76,7 @@ public class ChatCreator: ChikaCore.ChatCreator {
         }
     }
     
-    private func getChatIDAndValuesForUpdate(_ title: String, _ personIDs: [ID]) -> (ID, [String: Any]) {
+    private func getChatIDAndValuesForUpdate(_ title: String, _ personIDs: [ID], _ photoURL: String) -> (ID, [String: Any]) {
         let rootRef = database.reference()
         let chatsRef = rootRef.child("chats")
         
@@ -98,6 +98,11 @@ public class ChatCreator: ChikaCore.ChatCreator {
         values["chats/\(chatKey)/creator"] = meID
         values["chats/\(chatKey)/created:on"] = timestamp
         values["chats/\(chatKey)/updated:on"] = timestamp
+        values["chat:participant:count/\(chatKey)"] = personIDs.count
+        
+        if !photoURL.isEmpty {
+            values["chats/\(chatKey)/photo:url"] = photoURL
+        }
         
         return (ID(chatKey), values)
     }
