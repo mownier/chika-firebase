@@ -18,6 +18,7 @@
 		48562091202C34AA0025343B /* ChatParticipantPresenceListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48562090202C34AA0025343B /* ChatParticipantPresenceListener.swift */; };
 		48584B57201DB07700B2190A /* AddedIntoChatListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48584B56201DB07700B2190A /* AddedIntoChatListener.swift */; };
 		48584B59201DB71C00B2190A /* ChatTitleUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48584B58201DB71C00B2190A /* ChatTitleUpdateListener.swift */; };
+		487B16D7203DB2B700796152 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487B16D6203DB2B700796152 /* ImageUploader.swift */; };
 		488421C7200C88B70027A144 /* MyInfoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488421C6200C88B70027A144 /* MyInfoQuery.swift */; };
 		488B6E22201E099F007619EC /* TypingStatusListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488B6E21201E099F007619EC /* TypingStatusListener.swift */; };
 		488B6E24201E0F7C007619EC /* PresenceListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488B6E23201E0F7C007619EC /* PresenceListener.swift */; };
@@ -91,6 +92,7 @@
 		48562090202C34AA0025343B /* ChatParticipantPresenceListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatParticipantPresenceListener.swift; sourceTree = "<group>"; };
 		48584B56201DB07700B2190A /* AddedIntoChatListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedIntoChatListener.swift; sourceTree = "<group>"; };
 		48584B58201DB71C00B2190A /* ChatTitleUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitleUpdateListener.swift; sourceTree = "<group>"; };
+		487B16D6203DB2B700796152 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		488421C6200C88B70027A144 /* MyInfoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoQuery.swift; sourceTree = "<group>"; };
 		488B6E21201E099F007619EC /* TypingStatusListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingStatusListener.swift; sourceTree = "<group>"; };
 		488B6E23201E0F7C007619EC /* PresenceListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceListener.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				480F27A6201230B600156AA7 /* ContactRequestSender.swift */,
 				48D32216201B7016005A1AB8 /* DisplayNameUpdater.swift */,
 				480F27A82012340600156AA7 /* IgnoreContactRequestAction.swift */,
+				487B16D6203DB2B700796152 /* ImageUploader.swift */,
 				480F27AA2012352E00156AA7 /* MessageCreator.swift */,
 				48D32218201B7020005A1AB8 /* NameUpdater.swift */,
 				480F27AC2012408600156AA7 /* OfflinePresenceSwitcher.swift */,
@@ -603,6 +606,7 @@
 				48C971C8201F69EA008BEC1A /* PersonSearch.swift in Sources */,
 				48D32217201B7016005A1AB8 /* DisplayNameUpdater.swift in Sources */,
 				48584B57201DB07700B2190A /* AddedIntoChatListener.swift in Sources */,
+				487B16D7203DB2B700796152 /* ImageUploader.swift in Sources */,
 				48B5B31C20070C3D00D091B2 /* EmailUpdater.swift in Sources */,
 				480F27A520122FEE00156AA7 /* ChatTitleUpdater.swift in Sources */,
 				489A57CB202F359D00E9930E /* SeenMessageListener.swift in Sources */,
