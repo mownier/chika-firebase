@@ -7,6 +7,7 @@ use_frameworks!
 target 'ChikaFirebase' do
   pod 'FirebaseCommunity/Database'
   pod 'FirebaseCommunity/Auth'
+  pod 'FirebaseCommunity/Storage'
   pod 'ChikaCore'
   pod 'TNExtensions/EmailValidator'
   
