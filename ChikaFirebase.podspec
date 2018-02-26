@@ -231,6 +231,7 @@ Pod::Spec.new do |s|
     ss.dependency 'ChikaFirebase/Writer:PersonRegistrar'
     ss.dependency 'ChikaFirebase/Writer:TypingSwitcher'
     ss.dependency 'ChikaFirebase/Writer:SeenMessageMarker'
+    ss.dependency 'ChikaFirebase/Writer:ImageUploader'
   end
 
   s.subspec 'Writer:AcceptContactRequestAction' do |ss|
@@ -374,6 +375,16 @@ Pod::Spec.new do |s|
     ss.dependency 'ChikaCore/Service:Writer'
 
     ss.source_files = 'ChikaFirebase/Source/Service/Writer/SeenMessageMarker.swift'
+  end
+
+  s.subspec 'Writer:ImageUploader' do |ss|
+    ss.dependency 'FirebaseCommunity/Auth'
+    ss.dependency 'FirebaseCommunity/Storage'
+
+    ss.dependency 'ChikaCore/Error'
+    ss.dependency 'ChikaCore/Service:Writer'
+
+    ss.source_files = 'ChikaFirebase/Source/Service/Writer/ImageUploader.swift'
   end
 
   s.subspec 'Listener' do |ss|
